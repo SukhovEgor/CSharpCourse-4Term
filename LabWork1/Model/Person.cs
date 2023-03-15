@@ -113,7 +113,9 @@ namespace Model
         /// </summary>
         public Person() { }
 
-        //TODO: не используется
+        // TODO: не используется (+)
+
+        /*
         /// <summary>
         /// Check correct gender.
         /// </summary>
@@ -131,7 +133,7 @@ namespace Model
             {
                 return number;
             }
-        }
+        }*/
 
         /// <summary>
         /// Check correct age.
@@ -182,7 +184,12 @@ namespace Model
             return Language.Default;
         }
 
-        //TODO: XML
+        // TODO: XML(+)
+
+        /// <summary>
+        /// Check correct input of name or surname.
+        /// </summary>
+        /// <exception cref="FormatException">Incorrect input.</exception>
         private void CheckNameSurname()
         {
             if ((!string.IsNullOrEmpty(Name))
@@ -269,8 +276,9 @@ namespace Model
             }
 
             string surname = allSurnames[random.Next(allSurnames.Length)];
-            //TODO: range
-            int age = random.Next(10, 100);
+
+            // TODO: range(+)
+            int age = random.Next(6, 150);
 
             return new Person(name, surname, age, gender);
         }
