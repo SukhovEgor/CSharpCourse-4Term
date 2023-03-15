@@ -73,6 +73,7 @@ namespace Model
         public void RemovePersonByIndex(int index)
         {
             IsIndexExist(index);
+            //TODO: formatting
             _personList = _personList.Where((person, i) =>
             i != index).ToArray();
         }

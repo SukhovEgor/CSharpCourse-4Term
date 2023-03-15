@@ -113,6 +113,7 @@ namespace Model
         /// </summary>
         public Person() { }
 
+        //TODO: не используется
         /// <summary>
         /// Check correct gender.
         /// </summary>
@@ -181,6 +182,7 @@ namespace Model
             return Language.Default;
         }
 
+        //TODO: XML
         private void CheckNameSurname()
         {
             if ((!string.IsNullOrEmpty(Name))
@@ -267,6 +269,7 @@ namespace Model
             }
 
             string surname = allSurnames[random.Next(allSurnames.Length)];
+            //TODO: range
             int age = random.Next(10, 100);
 
             return new Person(name, surname, age, gender);
