@@ -12,6 +12,7 @@ namespace LR1
         /// </summary>
         public static void Main()
         {
+            /*
             try
             {
                 var inputPerson = InputPersonByConsole();
@@ -36,7 +37,15 @@ namespace LR1
                 {
                     throw exception;
                 }
-            }
+            }*/
+
+            var inputPerson = InputPersonByConsole();
+            var personList3 = new PersonList();
+            personList3.AddPerson(inputPerson);
+            Console.WriteLine("\nNew pirate is");
+            Info(personList3);
+            _ = Console.ReadKey();
+            Console.WriteLine("");
 
             var personList1 = new PersonList();
             var personList2 = new PersonList();
@@ -190,7 +199,7 @@ namespace LR1
                 try
                 {
                     action.Invoke();
-                    return;
+                    break;
                 }
                 catch (Exception exception)
                 {

@@ -46,8 +46,10 @@ namespace Model
 
             set
             {
+                _ = CheckLanguage(value);
                 _name = ConvertToRightRegister(value);
-                if (_surname != null)
+
+                if (_name != null)
                 {
                     CheckNameSurname();
                 }
@@ -63,11 +65,14 @@ namespace Model
 
             set
             {
+                _ = CheckLanguage(value);
                 _surname = ConvertToRightRegister(value);
-                if (_name != null)
+
+                if (_surname != null)
                 {
                     CheckNameSurname();
                 }
+
             }
         }
 
@@ -115,26 +120,6 @@ namespace Model
 
         // TODO: не используется (+)
 
-        /*
-        /// <summary>
-        /// Check correct gender.
-        /// </summary>
-        /// <param name="number">Genser's number.</param>
-        /// <returns>Genser's number.</returns>
-        /// <exception cref="Exception">Incorrect gender's number.</exception>
-        public static int CheckGender(int number)
-        {
-            if (number < 0 || number > 1)
-            {
-                throw new ArgumentException
-                    ("Enter 0 or 1, where 0 - Мale, 1 - Female");
-            }
-            else
-            {
-                return number;
-            }
-        }*/
-
         /// <summary>
         /// Check correct age.
         /// </summary>
@@ -146,7 +131,7 @@ namespace Model
             if (age < _minAge || age > _maxAge)
             {
                 throw new IndexOutOfRangeException
-                    ($"The age should be in the " +
+                    ($"\nThe age should be in the " +
                     $"range from {_minAge} to {_maxAge}");
             }
             else
@@ -177,8 +162,15 @@ namespace Model
                 }
                 else
                 {
-                    throw new ArgumentException("Incorrect input.");
+                    throw new FormatException
+                        ("\nThere should be only Russian" +
+                            " or only English characters");
                 }
+            }
+            else
+            {
+                throw new ArgumentException
+                    ("\nInput must not be empty.");
             }
 
             return Language.Default;
@@ -201,8 +193,7 @@ namespace Model
                 if (nameLanguage != surnameLanguage)
                 {
                     throw new FormatException
-                        ("There should be only Russian" +
-                           " or only English characters");
+                        ("\nName and surname must be in the same language");
                 }
             }
         }
@@ -278,7 +269,7 @@ namespace Model
             string surname = allSurnames[random.Next(allSurnames.Length)];
 
             // TODO: range(+)
-            int age = random.Next(6, 150);
+            int age = random.Next(_minAge, _maxAge);
 
             return new Person(name, surname, age, gender);
         }
