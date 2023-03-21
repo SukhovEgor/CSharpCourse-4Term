@@ -12,33 +12,6 @@ namespace LR1
         /// </summary>
         public static void Main()
         {
-            /*
-            try
-            {
-                var inputPerson = InputPersonByConsole();
-                var personList3 = new PersonList();
-                personList3.AddPerson(inputPerson);
-                Console.WriteLine("\nNew pirate is");
-                Info(personList3);
-                _ = Console.ReadKey();
-                Console.WriteLine("");
-            }
-
-            catch (Exception exception)
-            {
-                if (exception.GetType() == typeof(IndexOutOfRangeException)
-                    || exception.GetType() == typeof(FormatException)
-                    || exception.GetType() == typeof(ArgumentException))
-                {
-                    Console.WriteLine
-                    ($"Incorrect process. Error: {exception.Message}.");
-                }
-                else
-                {
-                    throw exception;
-                }
-            }*/
-
             var inputPerson = InputPersonByConsole();
             var personList3 = new PersonList();
             personList3.AddPerson(inputPerson);
