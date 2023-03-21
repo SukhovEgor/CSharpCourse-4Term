@@ -12,7 +12,6 @@ namespace LabWork2
         /// </summary>
         public static void Main()
         {
-
             var inputPerson = InputPersonByConsole();
             var personList3 = new PersonList();
             personList3.AddPerson(inputPerson);
