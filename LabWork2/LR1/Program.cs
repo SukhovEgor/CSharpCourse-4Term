@@ -1,6 +1,6 @@
 using Model;
 
-namespace LR1
+namespace LabWork2
 {
     /// <summary>
     /// Class programm.
