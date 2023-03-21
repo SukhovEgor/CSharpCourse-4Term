@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Design", "CA1031:Не перехватывать исключения общих типов", Justification = "<Ожидание>", Scope = "member", Target = "~M:LR1.Program.ActionHandler(System.Action,System.String)")]
+[assembly: SuppressMessage("Design", "CA1031:Не перехватывать исключения общих типов", Justification = "<Ожидание>", Scope = "member", Target = "~M:LabWork.Program.ActionHandler(System.Action,System.String)")]
