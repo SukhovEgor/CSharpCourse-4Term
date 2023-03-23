@@ -74,7 +74,6 @@ namespace Model
         {
             IsIndexExist(index);
 
-            // TODO: formatting (+)
             _personList = _personList.
                 Where((person, i) => i != index).ToArray();
         }

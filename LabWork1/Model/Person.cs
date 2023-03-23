@@ -118,8 +118,6 @@ namespace Model
         /// </summary>
         public Person() { }
 
-        // TODO: не используется (+)
-
         /// <summary>
         /// Check correct age.
         /// </summary>
@@ -172,11 +170,7 @@ namespace Model
                 throw new ArgumentException
                     ("\nInput must not be empty.");
             }
-
-            return Language.Default;
         }
-
-        // TODO: XML(+)
 
         /// <summary>
         /// Check correct input of name or surname.
@@ -268,7 +262,6 @@ namespace Model
 
             string surname = allSurnames[random.Next(allSurnames.Length)];
 
-            // TODO: range(+)
             int age = random.Next(_minAge, _maxAge);
 
             return new Person(name, surname, age, gender);
