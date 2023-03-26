@@ -13,6 +13,8 @@ namespace Model
         /// <summary>
         /// Female gender.
         /// </summary>
-        Female
+        Female,
+
+        Default
     }
 }

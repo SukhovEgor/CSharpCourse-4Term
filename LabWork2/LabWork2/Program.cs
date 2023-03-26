@@ -12,6 +12,7 @@ namespace LabWork2
         /// </summary>
         public static void Main()
         {
+            /*
             var inputPerson = InputPersonByConsole();
             var personList3 = new PersonList();
             personList3.AddPerson(inputPerson);
@@ -179,7 +180,8 @@ namespace LabWork2
                     Console.WriteLine(exception.Message);
                     Console.WriteLine("Repeat the input");
                 }
-            }
+            }*/
+
         }
     }
 }

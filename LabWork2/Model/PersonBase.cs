@@ -30,12 +30,12 @@ namespace Model
         /// <summary>
         /// Minimum age.
         /// </summary>
-        private const int _minAge = 6;
+        protected abstract int MinAge { get; }
 
         /// <summary>
         /// Maximum age.
         /// </summary>
-        private const int _maxAge = 150;
+        protected abstract int MaxAge { get; }
 
         /// <summary>
         /// Gets or sets name.
@@ -131,11 +131,11 @@ namespace Model
         /// <exception cref="Exception">Incorrect age.</exception>
         protected virtual int CheckAge(int age)
         {
-            if (age < _minAge || age > _maxAge)
+            if (age < MinAge || age > MaxAge)
             {
                 throw new IndexOutOfRangeException
                     ($"\nThe age should be in the " +
-                    $"range from {_minAge} to {_maxAge}");
+                    $"range from {MinAge} to {MaxAge}");
             }
             else
             {
@@ -224,57 +224,6 @@ namespace Model
 
             return value.Substring(0, 1).ToUpper() +
                     value.Substring(1, value.Length - 1).ToLower();
-        }
-
-        /// <summary>
-        /// Entering a random person.
-        /// </summary>
-        /// <returns>Random person.</returns>
-        public static PersonBase GetRandomPerson()
-        {
-            string[] maleNames = new string[]
-            {
-                "Jack", "William", "Davy",
-                "Joshamee", "Hector", "Theodore",
-                "James", "Sao", "Edward"
-            };
-
-            string[] femaleNames = new string[]
-            {
-                "Elizabeth", "Tia", "Keira",
-                "Carina", "Kaya", "Angelica",
-                "Penelope", "Naomie", "Anamaria"
-            };
-
-            string[] allSurnames = new string[]
-            {
-                "Sparrow", "Turner", "Jones",
-                "Gibbs", "Barbossa", "Groves",
-                "Norrington", "Feng", "Teague",
-                "Swann", "Dalma", "Smyth"
-            };
-
-            var random = new Random();
-            string name;
-            var gender = (Gender)random.Next(0, 2);
-            switch (gender)
-            {
-                case Gender.Male:
-                    name = maleNames[random.Next(maleNames.Length)];
-                    break;
-                case Gender.Female:
-                    name = femaleNames[random.Next(femaleNames.Length)];
-                    break;
-                default:
-                    return new PersonBase("Default", "Person", 0, Gender.Male);
-            }
-
-            string surname = allSurnames[random.Next(allSurnames.Length)];
-
-            // TODO: range(+)
-            int age = random.Next(_minAge, _maxAge);
-
-            return new PersonBase(name, surname, age, gender);
         }
 
         /// <summary>
