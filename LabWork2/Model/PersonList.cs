@@ -8,13 +8,13 @@ namespace Model
         /// <summary>
         /// Creating an array of persons.
         /// </summary>
-        private Person[] _personList = new Person[0];
+        private PersonBase[] _personList = new PersonBase[0];
 
         /// <summary>
         /// Adding person to the end of the list.
         /// </summary>
         /// <param name="person">Person.</param>
-        public void AddPerson(Person person)
+        public void AddPerson(PersonBase person)
         {
             Array.Resize(ref _personList, _personList.Length + 1);
             _personList[_personList.Length - 1] = person;
@@ -24,9 +24,9 @@ namespace Model
         /// Adding a few of persons.
         /// </summary>
         /// <param name="persons">Array of persons.</param>
-        public void AddPersons(Person[] persons)
+        public void AddPersons(PersonBase[] persons)
         {
-            foreach (Person person in persons)
+            foreach (PersonBase person in persons)
             {
                 AddPerson(person);
             }
@@ -38,7 +38,7 @@ namespace Model
         /// <param name="person">Person.</param>
         /// <returns>Index of the person.</returns>
         /// <exception cref="Exception">Person does not exist.</exception>
-        public int GetIndexPerson(Person person)
+        public int GetIndexPerson(PersonBase person)
         {
             for (int index = 0; index < _personList.Length; index++)
             {
@@ -83,7 +83,7 @@ namespace Model
         /// Removing a certain person.
         /// </summary>
         /// <param name="person">Person.</param>
-        public void DeletePersonByName(Person person)
+        public void DeletePersonByName(PersonBase person)
         {
             RemovePersonByIndex(GetIndexPerson(person));
         }
@@ -93,7 +93,7 @@ namespace Model
         /// </summary>
         /// <param name="index">Person's index.</param>
         /// <returns>Person.</returns>
-        public Person SearchPersonByIndex(int index)
+        public PersonBase SearchPersonByIndex(int index)
         {
             IsIndexExist(index);
             return _personList[index];

@@ -5,7 +5,7 @@ namespace Model
     /// <summary>
     /// Class Person.
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// Person's name.
@@ -105,7 +105,7 @@ namespace Model
         /// <param name="surname">Person's surname.</param>
         /// <param name="age">Person's age.</param>
         /// <param name="gender">Person's gender.</param>
-        public Person(string name, string surname, int age, Gender gender)
+        public PersonBase(string name, string surname, int age, Gender gender)
         {
             Name = name;
             Surname = surname;
@@ -116,9 +116,12 @@ namespace Model
         /// <summary>
         /// Default person.
         /// </summary>
-        public Person() { }
+        public PersonBase() { }
 
-        // TODO: не используется (+)
+        public string GetPersonInfo() => 
+            $"{Name} {Surname}; Age: {Age}; Gender: {Gender}";
+        
+        public string GetNameSurname() => $"{Name} {Surname}";
 
         /// <summary>
         /// Check correct age.
@@ -126,7 +129,7 @@ namespace Model
         /// <param name="age">Age.</param>
         /// <returns>Age.</returns>
         /// <exception cref="Exception">Incorrect age.</exception>
-        private int CheckAge(int age)
+        protected virtual int CheckAge(int age)
         {
             if (age < _minAge || age > _maxAge)
             {
@@ -227,7 +230,7 @@ namespace Model
         /// Entering a random person.
         /// </summary>
         /// <returns>Random person.</returns>
-        public static Person GetRandomPerson()
+        public static PersonBase GetRandomPerson()
         {
             string[] maleNames = new string[]
             {
@@ -263,7 +266,7 @@ namespace Model
                     name = femaleNames[random.Next(femaleNames.Length)];
                     break;
                 default:
-                    return new Person("Default", "Person", 0, Gender.Male);
+                    return new PersonBase("Default", "Person", 0, Gender.Male);
             }
 
             string surname = allSurnames[random.Next(allSurnames.Length)];
@@ -271,13 +274,12 @@ namespace Model
             // TODO: range(+)
             int age = random.Next(_minAge, _maxAge);
 
-            return new Person(name, surname, age, gender);
+            return new PersonBase(name, surname, age, gender);
         }
 
         /// <summary>
         /// Gets output of iformation about the person.
         /// </summary>
-        public string Info => $"{Name} {Surname}," +
-            $" Age: {Age}, Gender: {Gender}";
+        public abstract string Info();
     }
 }

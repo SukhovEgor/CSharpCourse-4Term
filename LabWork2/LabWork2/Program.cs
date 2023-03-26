@@ -23,18 +23,18 @@ namespace LabWork2
             var personList1 = new PersonList();
             var personList2 = new PersonList();
 
-            Person[] personArr1 = new Person[]
+            PersonBase[] personArr1 = new PersonBase[]
             {
-                new Person("Jack", "Sparrow", 35, Gender.Male),
-                new Person("Elizabeth", "Swann", 17, Gender.Female),
-                new Person("William", "Turner", 25, Gender.Male)
+                new PersonBase("Jack", "Sparrow", 35, Gender.Male),
+                new PersonBase("Elizabeth", "Swann", 17, Gender.Female),
+                new PersonBase("William", "Turner", 25, Gender.Male)
             };
 
-            Person[] personArr2 = new Person[]
+            PersonBase[] personArr2 = new PersonBase[]
             {
-                new Person("Joshamee", "Gibbs", 55, Gender.Male),
-                new Person("Hector", "Barbossa", 65, Gender.Male),
-                new Person("Davy", "Jones", 100, Gender.Male)
+                new PersonBase("Joshamee", "Gibbs", 55, Gender.Male),
+                new PersonBase("Hector", "Barbossa", 65, Gender.Male),
+                new PersonBase("Davy", "Jones", 100, Gender.Male)
             };
 
             personList1.AddPersons(personArr1);
@@ -43,7 +43,7 @@ namespace LabWork2
             PrintList(personList1, personList2);
 
             personList1.AddPerson(
-                new Person("James", "Norrington", 33, Gender.Male));
+                new PersonBase("James", "Norrington", 33, Gender.Male));
             Console.WriteLine("Adding a new pirate to the Crew 1");
             PrintList(personList1, personList2);
 
@@ -59,7 +59,7 @@ namespace LabWork2
             Console.WriteLine("The second Сrew sank (Clearing the Crew 2)");
             PrintList(personList1, personList2);
 
-            personList2.AddPerson(Person.GetRandomPerson());
+            personList2.AddPerson(PersonBase.GetRandomPerson());
             Console.WriteLine("Adding a new random pirate to the Crew 2");
             PrintList(personList1, personList2);
 
@@ -98,9 +98,9 @@ namespace LabWork2
         /// </summary>
         /// <returns>New person.</returns>
         /// <exception cref="IndexOutOfRangeException">IndexOut.</exception>
-        public static Person InputPersonByConsole()
+        public static PersonBase InputPersonByConsole()
         {
-            var person = new Person();
+            var person = new PersonBase();
 
             var actionList = new List<(Action Action, string)>
             {
