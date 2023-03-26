@@ -70,7 +70,7 @@ namespace Model
 
             if (Partner != null)
             {
-                marriegeStatus = $"Married to {Partner.GetNameSurname}";
+                marriegeStatus = $"Married to {Partner.GetNameSurname()}";
             }
 
             string companyStatus = "An unemployed pirate";
@@ -211,11 +211,23 @@ namespace Model
 
         private void CheckPartnerGender(Adult partner)
         {
-            if (partner != null && partner.Gender != Gender)
+            if (partner != null && partner.Gender == Gender)
             {
                 throw new ArgumentException
                     ("Pirates do not approve of same-sex marriage");
             }
+        }
+
+        public string FavoriteDrink()
+        {
+            string[] drinkNames = new string[]
+            {
+                "Beer", "Wine", "Brandy",
+                "Gin", "Rum", "Whiskey"
+            };
+            var random = new Random();
+            string drink = drinkNames[random.Next(drinkNames.Length)];
+            return drink;
         }
 
         public Adult()

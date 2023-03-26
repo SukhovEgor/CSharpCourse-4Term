@@ -5,7 +5,7 @@ namespace LabWork2
     /// <summary>
     /// Class programm.
     /// </summary>
-    internal class Program
+    public class Program
     {
         /// <summary>
         /// Main.
@@ -181,6 +181,90 @@ namespace LabWork2
                     Console.WriteLine("Repeat the input");
                 }
             }*/
+            /*
+            Random random = new Random();
+            PersonList personList1 = new PersonList();
+            Console.WriteLine("Adding 7 person to list");
+            Adult adult = null;
+            Adult adult1 = new Adult("William", "Turner", 25, Gender.Male,
+                1007, "Flying Dutchman", adult);
+            Adult adult2 = new Adult("Elizabeth", "Swann", 17, Gender.Female,
+                1000, "Lonely House", adult1);
+            adult = adult2;
+
+            Child child1 = new Child(adult2, adult1, "School №2", "Tom", "Green",
+                10, Gender.Male);
+            PersonBase[] personArr = new PersonBase[] { adult1, adult2, child1 };
+            personList1.AddPersons(personArr);
+            for (int i = 0; i < 4; i++)
+            {
+                if (random.Next(2) == 0)
+                {
+                    personList1.AddPerson(Adult.GetRandomAdult(random));
+                }
+                else
+                {
+                    personList1.AddPerson(Child.GetRandomChild(random));
+                }
+            }
+            Console.WriteLine("\nList");
+            Info(personList1);*/
+
+            Console.WriteLine("The crew has been created.");
+
+            var personList = new PersonList();
+            var random = new Random();
+
+            for (var i = 0; i < 5; i++)
+            {
+                PersonBase randomPerson = random.Next(0, 2) == 0
+                    ? Adult.GetRandomPerson()
+                    : Child.GetRandomPerson();
+                personList.AddPerson(randomPerson);
+            }
+
+            _ = Console.ReadKey();
+
+            Console.WriteLine("\nBelow are the crew members:");
+            PrintList(personList);
+
+            _ = Console.ReadKey();
+
+            var person = personList.SearchPersonByIndex(3);
+            switch (person)
+            {
+                case Adult adult:
+                    Console.WriteLine($"\n{adult.GetNameSurname()} " +
+                        $"prefers {adult.FavoriteDrink()}");
+                    break;
+                case Child child:
+                    Console.WriteLine($"\n{child.GetNameSurname()}" +
+                        $" has a model of {child.ShipCollection()}");
+                    break;
+                default:
+                    break;
+            }
+            _ = Console.ReadKey();
+        }
+
+        public static void PrintList(PersonList personList)
+        {
+            if (personList.Length == 0)
+            {
+                throw new NullReferenceException("List is empty.");
+            }
+            else
+            {
+                for (int i = 0; i < personList.Length; i++)
+                {
+                    var tmpPerson = personList.SearchPersonByIndex(i);
+                    Console.WriteLine($"\n{tmpPerson.Info()}");
+                }
+            }
+        }
+
+        public void CheckFourthPerson(PersonList personList)
+        {
 
         }
     }

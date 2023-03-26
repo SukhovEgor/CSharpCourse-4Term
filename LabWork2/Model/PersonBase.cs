@@ -122,6 +122,11 @@ namespace Model
             $"{Name} {Surname}; Age: {Age}; Gender: {Gender}";
         
         public string GetNameSurname() => $"{Name} {Surname}";
+        /*
+        public string GetNameSurname()
+        {
+            return $"{Name} {Surname}";
+        } */
 
         /// <summary>
         /// Check correct age.

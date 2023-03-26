@@ -1,6 +1,6 @@
 namespace Model
 {
-    internal class Child : PersonBase
+    public class Child : PersonBase
     {
         /// <summary>
         /// Minimum age.
@@ -78,27 +78,27 @@ namespace Model
 
             if (Mother != null)
             {
-                motherStatus = $"Mother is {Mother.GetNameSurname}";
+                motherStatus = $"Mother is {Mother.GetNameSurname()}";
             }
 
             if (Father != null)
             {
-                fatherStatus = $"Father is {Father.GetNameSurname}";
+                fatherStatus = $"Father is {Father.GetNameSurname()}";
             }
 
             string schoolStatus = "not studing";
             if (!string.IsNullOrEmpty(School))
             {
-                schoolStatus = $"study in {School}";
+                schoolStatus = $"Study in {School}";
             }
 
             if (Mother == null && Father == null)
             {
                 return Gender == Gender.Female ?
-                ($"{Name} {Surname} {schoolStatus}" +
+                ($"{GetPersonInfo()} \n{schoolStatus}" +
                     $"\nUnfortunately, she is an orphan")
                     :
-                ($"{Name} {Surname} {schoolStatus}" +
+                ($"{GetPersonInfo()} \n{schoolStatus}" +
                     $"\nUnfortunately, he is an orphan");
             }
             else
@@ -214,6 +214,19 @@ namespace Model
             {
                 return age;
             }
+        }
+
+        public string ShipCollection()
+        {
+            string[] shipModels = new string[]
+            {
+                "Black Pearl", "Flying Dutchman", "Queen Anne's Revenge",
+                "HMS Interceptor", "Empress", "Hai Peng", "Jolly Mon",
+                "Dying Gull", "Wicked Wench", "Misty Lady"
+            };
+            var random = new Random();
+            string model = shipModels[random.Next(shipModels.Length)];
+            return model;
         }
 
         public Child()
