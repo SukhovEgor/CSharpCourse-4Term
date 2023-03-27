@@ -15,6 +15,9 @@ namespace Model
         /// </summary>
         Female,
 
+        /// <summary>
+        /// Default gender.
+        /// </summary>
         Default
     }
 }

@@ -1,5 +1,8 @@
 namespace Model
 {
+    /// <summary>
+    /// Class Child.
+    /// </summary>
     public class Child : PersonBase
     {
         /// <summary>
@@ -23,14 +26,23 @@ namespace Model
         protected override int MaxAge { get; } = _maxAge;
 
         /// <summary>
-        /// 
+        /// Child's mother.
         /// </summary>
         private Adult _mother;
 
+        /// <summary>
+        /// Child's father.
+        /// </summary>
         private Adult _father;
 
+        /// <summary>
+        /// Child's school.
+        /// </summary>
         private string _school;
 
+        /// <summary>
+        /// Gets or sets child's mother.
+        /// </summary>
         public Adult Mother
         {
             get => _mother;
@@ -42,6 +54,9 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets child's father.
+        /// </summary>
         public Adult Father
         {
             get => _father;
@@ -53,16 +68,22 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets child's school.
+        /// </summary>
         public string School
         {
             get => _school;
 
-            set
-            {
-                _school = value;
-            }
+            set => _school = value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parent">Mother or Father.</param>
+        /// <param name="gender">Male or Female.</param>
+        /// <exception cref="ArgumentException">Incorrent input.</exception>
         private void CheckParentGender(Adult parent, Gender gender)
         {
             if (parent != null && parent.Gender != gender)
@@ -71,6 +92,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Info about child.
+        /// </summary>
+        /// <returns>Info.</returns>
         public override string Info()
         {
             string motherStatus = "No mother";
@@ -108,6 +133,16 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Child's constructor.
+        /// </summary>
+        /// <param name="name">Name.</param>
+        /// <param name="surname">Surname.</param>
+        /// <param name="age">Age.</param>
+        /// <param name="gender">Gender.</param>
+        /// <param name="mother">Mother.</param>
+        /// <param name="father">Father.</param>
+        /// <param name="school">School.</param>
         public Child(string name, string surname, int age, Gender gender,
             Adult mother, Adult father, string school)
             : base(name, surname, age, gender)
@@ -118,7 +153,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Entering a random person.
+        /// Entering a random child.
         /// </summary>
         /// <returns>Random person.</returns>
         public static Child GetRandomPerson()
@@ -164,6 +199,10 @@ namespace Model
                 case Gender.Female:
                     name = femaleNames[random.Next(femaleNames.Length)];
                     break;
+                case Gender.Default:
+                    break;
+                default:
+                    break;
             }
 
             string surname = allSurnames[random.Next(allSurnames.Length)];
@@ -178,6 +217,12 @@ namespace Model
                             mother, father, school);
         }
 
+        /// <summary>
+        /// Create random parent for random child.
+        /// </summary>
+        /// <param name="numberParent"> 0 is Male, 1 is Female.</param>
+        /// <returns>Random Parent.</returns>
+        /// <exception cref="ArgumentException">Incorrect input.</exception>
         private static Adult GetRandomParent(int numberParent)
         {
             var random = new Random();
@@ -197,11 +242,17 @@ namespace Model
                         return Adult.GetRandomPerson(Gender.Female);
                     default:
                         throw new ArgumentException
-                            ("You should input only 1 or 2");
+                            ("Number must be in range [0; 1].");
                 }
             }
         }
 
+        /// <summary>
+        /// Check correct age.
+        /// </summary>
+        /// <param name="age">Age.</param>
+        /// <returns>Correct age.</returns>
+        /// <exception cref="IndexOutOfRangeException">Incorrect input.</exception>
         protected override int CheckAge(int age)
         {
             if (age < MinAge || age > MaxAge)
@@ -216,6 +267,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Special method for class child.
+        /// </summary>
+        /// <returns>Name of ship model.</returns>
         public string ShipCollection()
         {
             string[] shipModels = new string[]
@@ -229,6 +284,9 @@ namespace Model
             return model;
         }
 
+        /// <summary>
+        /// Child without parameters.
+        /// </summary>
         public Child()
         {
         }

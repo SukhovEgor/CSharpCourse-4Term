@@ -1,13 +1,23 @@
-using System.Diagnostics.Metrics;
-
 namespace Model
 {
+    /// <summary>
+    /// Class Adult.
+    /// </summary>
     public class Adult : PersonBase
     {
+        /// <summary>
+        /// Passport ID.
+        /// </summary>
         private int _passportID;
 
+        /// <summary>
+        /// Name of company.
+        /// </summary>
         private string _company;
 
+        /// <summary>
+        /// Partner.
+        /// </summary>
         private Adult _partner;
 
         /// <summary>
@@ -30,29 +40,39 @@ namespace Model
         /// </summary>
         protected override int MaxAge { get; } = _maxAge;
 
-        private const int MinPassportID = 1000;
+        /// <summary>
+        /// Minimum value of passport ID.
+        /// </summary>
+        private const int _minPassportID = 1000;
 
-        private const int MaxPassportID = 9999;
+        /// <summary>
+        /// Maximum value of passport ID.
+        /// </summary>
+        private const int _maxPassportID = 9999;
+
+        /// <summary>
+        /// passport ID.
+        /// </summary>
         public int PassportID
         {
             get => _passportID;
 
-            set
-            {
-                _passportID = CheckPassportID(value);
-            }
+            set => _passportID = CheckPassportID(value);
         }
 
+        /// <summary>
+        /// Company.
+        /// </summary>
         public string Company
         {
             get => _company;
 
-            set
-            {
-                _company = value;
-            }
+            set => _company = value;
         }
 
+        /// <summary>
+        /// Partner.
+        /// </summary>
         public Adult Partner
         {
             get => _partner;
@@ -64,6 +84,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Information about adult.
+        /// </summary>
+        /// <returns>Information.</returns>
         public override string Info()
         {
             string marriegeStatus = "Single";
@@ -84,6 +108,16 @@ namespace Model
                     $"\n{marriegeStatus},\n{companyStatus}";
         }
 
+        /// <summary>
+        /// Adult's constructor.
+        /// </summary>
+        /// <param name="name">Name.</param>
+        /// <param name="surname">Surname.</param>
+        /// <param name="age">Age.</param>
+        /// <param name="gender">Gender.</param>
+        /// <param name="passportID">PAssport ID.</param>
+        /// <param name="company">Company.</param>
+        /// <param name="partner">Partner.</param>
         public Adult(string name, string surname, int age, Gender gender,
             int passportID, string company, Adult partner)
             : base(name, surname, age, gender)
@@ -147,11 +181,15 @@ namespace Model
                 case Gender.Female:
                     name = femaleNames[random.Next(femaleNames.Length)];
                     break;
+                case Gender.Default:
+                    break;
+                default:
+                    break;
             }
 
             string surname = allSurnames[random.Next(allSurnames.Length)];
             int age = random.Next(_minAge, _maxAge);
-            int passportID = random.Next(MinPassportID, MaxPassportID);
+            int passportID = random.Next(_minPassportID, _maxPassportID);
             string company = companyNames[random.Next(companyNames.Length)];
 
             Adult partner = null;
@@ -181,6 +219,12 @@ namespace Model
                             passportID, company, partner);
         }
 
+        /// <summary>
+        /// Check input age.
+        /// </summary>
+        /// <param name="age">Age.</param>
+        /// <returns>Correct age.</returns>
+        /// <exception cref="IndexOutOfRangeException">Incorrect.</exception>
         protected override int CheckAge(int age)
         {
             if (age < MinAge || age > MaxAge)
@@ -195,13 +239,19 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Check input passport ID.
+        /// </summary>
+        /// <param name="passportID">Passport ID.</param>
+        /// <returns>Correct passport ID.</returns>
+        /// <exception cref="IndexOutOfRangeException">Incorrect.</exception>
         private int CheckPassportID(int passportID)
         {
-            if (passportID < MinPassportID || passportID > MaxPassportID)
+            if (passportID < _minPassportID || passportID > _maxPassportID)
             {
                 throw new IndexOutOfRangeException
                     ($"\nThe passport should be in the " +
-                    $"range from {MinPassportID} to {MaxPassportID}");
+                    $"range from {_minPassportID} to {_maxPassportID}");
             }
             else
             {
@@ -209,6 +259,11 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Check gender of adult's partner.
+        /// </summary>
+        /// <param name="partner">Partner.</param>
+        /// <exception cref="ArgumentException">Incorrect input.</exception>
         private void CheckPartnerGender(Adult partner)
         {
             if (partner != null && partner.Gender == Gender)
@@ -218,6 +273,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Special method for adult.
+        /// </summary>
+        /// <returns>Name of drink.</returns>
         public string FavoriteDrink()
         {
             string[] drinkNames = new string[]
@@ -230,6 +289,9 @@ namespace Model
             return drink;
         }
 
+        /// <summary>
+        /// Adult without parameters.
+        /// </summary>
         public Adult()
         {
         }

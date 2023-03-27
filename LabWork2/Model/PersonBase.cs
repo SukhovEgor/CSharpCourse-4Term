@@ -118,21 +118,25 @@ namespace Model
         /// </summary>
         public PersonBase() { }
 
+        /// <summary>
+        /// Getting information about person.
+        /// </summary>
+        /// <returns>Person's information.</returns>
         public string GetPersonInfo() => 
             $"{Name} {Surname}; Age: {Age}; Gender: {Gender}";
-        
+
+        /// <summary>
+        /// Getting name and surname.
+        /// </summary>
+        /// <returns>Name and surname.</returns>
         public string GetNameSurname() => $"{Name} {Surname}";
-        /*
-        public string GetNameSurname()
-        {
-            return $"{Name} {Surname}";
-        } */
+
 
         /// <summary>
         /// Check correct age.
         /// </summary>
         /// <param name="age">Age.</param>
-        /// <returns>Age.</returns>
+        /// <returns>Correct age.</returns>
         /// <exception cref="Exception">Incorrect age.</exception>
         protected virtual int CheckAge(int age)
         {
@@ -183,8 +187,6 @@ namespace Model
 
             return Language.Default;
         }
-
-        // TODO: XML(+)
 
         /// <summary>
         /// Check correct input of name or surname.
