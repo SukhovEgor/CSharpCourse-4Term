@@ -252,7 +252,8 @@ namespace Model
         /// </summary>
         /// <param name="age">Age.</param>
         /// <returns>Correct age.</returns>
-        /// <exception cref="IndexOutOfRangeException">Incorrect input.</exception>
+        /// <exception cref="IndexOutOfRangeException">
+        /// Incorrect input.</exception>
         protected override int CheckAge(int age)
         {
             if (age < MinAge || age > MaxAge)

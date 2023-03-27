@@ -105,7 +105,8 @@ namespace Model
         /// <param name="surname">Person's surname.</param>
         /// <param name="age">Person's age.</param>
         /// <param name="gender">Person's gender.</param>
-        public PersonBase(string name, string surname, int age, Gender gender)
+        public PersonBase(string name, string surname,
+            int age, Gender gender)
         {
             Name = name;
             Surname = surname;

@@ -54,7 +54,8 @@ namespace LabWork2
         /// Print personList.
         /// </summary>
         /// <param name="personList">PersonList.</param>
-        /// <exception cref="NullReferenceException">Incorrect input.</exception>
+        /// <exception cref="NullReferenceException">
+        /// Incorrect input.</exception>
         public static void PrintList(PersonList personList)
         {
             if (personList.Length == 0)
