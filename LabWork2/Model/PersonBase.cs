@@ -46,11 +46,10 @@ namespace Model
 
             set
             {
-                //TODO:
-                _ = CheckLanguage(value);
+                //TODO: (+)
                 _name = ConvertToRightRegister(value);
 
-                if (_name != null)
+                if (_surname != null)
                 {
                     CheckNameSurname();
                 }
@@ -66,11 +65,10 @@ namespace Model
 
             set
             {
-                //TODO:
-                _ = CheckLanguage(value);
+                //TODO: (+)
                 _surname = ConvertToRightRegister(value);
 
-                if (_surname != null)
+                if (_name != null)
                 {
                     CheckNameSurname();
                 }
@@ -236,10 +234,10 @@ namespace Model
                     value.Substring(1, value.Length - 1).ToLower();
         }
 
-        //TODO: rename
+        //TODO: rename (+)
         /// <summary>
         /// Gets output of iformation about the person.
         /// </summary>
-        public abstract string Info();
+        public abstract string GetInfo();
     }
 }

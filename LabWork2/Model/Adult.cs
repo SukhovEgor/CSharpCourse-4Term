@@ -88,7 +88,7 @@ namespace Model
         /// Information about adult.
         /// </summary>
         /// <returns>Information.</returns>
-        public override string Info()
+        public override string GetInfo()
         {
             string marriegeStatus = "Single";
 
@@ -273,12 +273,11 @@ namespace Model
             }
         }
 
-        //TODO: rename
         /// <summary>
         /// Special method for adult.
         /// </summary>
         /// <returns>Name of drink.</returns>
-        public string FavoriteDrink()
+        public string GetFavoriteDrink()
         {
             string[] drinkNames = new string[]
             {

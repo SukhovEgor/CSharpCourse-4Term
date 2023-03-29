@@ -37,11 +37,11 @@ namespace LabWork2
             {
                 case Adult adult:
                     Console.WriteLine($"\n{adult.GetNameSurname()} " +
-                        $"prefers {adult.FavoriteDrink()}");
+                        $"prefers {adult.GetFavoriteDrink()}");
                     break;
                 case Child child:
                     Console.WriteLine($"\n{child.GetNameSurname()}" +
-                        $" has a model of {child.ShipCollection()}");
+                        $" has a model of {child.GetShipCollection()}");
                     break;
                 default:
                     break;
@@ -67,7 +67,7 @@ namespace LabWork2
                 for (int i = 0; i < personList.Length; i++)
                 {
                     var tmpPerson = personList.SearchPersonByIndex(i);
-                    Console.WriteLine($"\n{tmpPerson.Info()}");
+                    Console.WriteLine($"\n{tmpPerson.GetInfo()}");
                 }
             }
         }
