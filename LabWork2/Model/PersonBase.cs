@@ -123,7 +123,7 @@ namespace Model
         /// Getting information about person.
         /// </summary>
         /// <returns>Person's information.</returns>
-        public string GetPersonInfo() => 
+        public string GetPersonInfo() =>
             $"{Name} {Surname}; Age: {Age}; Gender: {Gender}";
 
         /// <summary>
