@@ -46,6 +46,7 @@ namespace Model
 
             set
             {
+                //TODO:
                 _ = CheckLanguage(value);
                 _name = ConvertToRightRegister(value);
 
@@ -65,6 +66,7 @@ namespace Model
 
             set
             {
+                //TODO:
                 _ = CheckLanguage(value);
                 _surname = ConvertToRightRegister(value);
 
@@ -234,6 +236,7 @@ namespace Model
                     value.Substring(1, value.Length - 1).ToLower();
         }
 
+        //TODO: rename
         /// <summary>
         /// Gets output of iformation about the person.
         /// </summary>

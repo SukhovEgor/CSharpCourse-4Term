@@ -119,17 +119,18 @@ namespace Model
 
             if (Mother == null && Father == null)
             {
-                return Gender == Gender.Female ?
-                ($"{GetPersonInfo()} \n{schoolStatus}" +
-                    $"\nUnfortunately, she is an orphan")
-                    :
-                ($"{GetPersonInfo()} \n{schoolStatus}" +
-                    $"\nUnfortunately, he is an orphan");
+                return Gender == Gender.Female
+                    ? $"{GetPersonInfo()} \n{schoolStatus}" +
+                        $"\nUnfortunately, she is an orphan"
+                    : $"{GetPersonInfo()} \n{schoolStatus}" +
+                        $"\nUnfortunately, he is an orphan";
             }
             else
             {
-                return $"{GetPersonInfo()}" +
-                    $"\n{fatherStatus},\n{motherStatus},\n{schoolStatus}";
+                return $"{GetPersonInfo()}\n" +
+                    $"{fatherStatus},\n" +
+                    $"{motherStatus},\n" +
+                    $"{schoolStatus}";
             }
         }
 
@@ -260,7 +261,7 @@ namespace Model
             {
                 throw new IndexOutOfRangeException
                     ($"\nThe age should be in the " +
-                    $"range from {MinAge} to {MaxAge}");
+                        $"range from {MinAge} to {MaxAge}");
             }
             else
             {
@@ -268,6 +269,7 @@ namespace Model
             }
         }
 
+        //TODO: rename
         /// <summary>
         /// Special method for class child.
         /// </summary>
