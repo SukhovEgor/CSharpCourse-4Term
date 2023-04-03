@@ -1,10 +1,7 @@
 ﻿namespace Model
 {
-    internal class Program
+    public abstract class PassiveElementBase
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        
     }
 }
