@@ -1,38 +1,34 @@
 ﻿using Model;
-using System;
 
 namespace ConsoleLoader
 {
+    /// <summary>
+    /// Class Program.
+    /// </summary>
     public class Program
     {
-        public static void Main(string[] args)
+        /// <summary>
+        /// Main.
+        /// </summary>
+        public static void Main()
         {
             var elemetList = new List<PassiveElementBase>();
             bool cicle = true;
             while (cicle)
             {
-                switch (EnterByConsole())
+                switch (SelectElement())
                 {
                     case 1:
-                        var resistor = Resistor.InputValuesByConsole();
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(resistor.Impedance);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        elemetList.Add(resistor);
+                        var resistor = Resistor.EnterValues();
+                        elemetList.Add(ShowImpedance(resistor));
                         break;
                     case 2:
-                        var inductorCoil = InductorCoil.InputValuesByConsole();
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(inductorCoil.Impedance);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        elemetList.Add(inductorCoil);
+                        var inductorCoil = InductorCoil.EnterValues();
+                        elemetList.Add(ShowImpedance(inductorCoil));
                         break;
                     case 3:
-                        var capacitor = Capacitor.InputValuesByConsole();
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine(capacitor.Impedance);
-                        Console.ForegroundColor = ConsoleColor.White; 
-                        elemetList.Add(capacitor);
+                        var capacitor = Capacitor.EnterValues();
+                        elemetList.Add(ShowImpedance(capacitor));
                         break;
                     case 4:
                         foreach (var tmpMotion in elemetList)
@@ -47,7 +43,27 @@ namespace ConsoleLoader
                 }
             }
         }
-        public static int EnterByConsole()
+
+        /// <summary>
+        /// Show impedance by console.
+        /// </summary>
+        /// <param name="passiveElementBase">Passive Element.</param>
+        public static PassiveElementBase ShowImpedance(PassiveElementBase passiveElementBase)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(passiveElementBase.Impedance);
+            Console.ForegroundColor = ConsoleColor.White;
+            return passiveElementBase;
+        }
+
+        /// <summary>
+        /// Gives a cycle to select.
+        /// </summary>
+        /// <returns>Number of chosen passive element.</returns>
+        /// <exception cref="ArgumentException">Incorrect input.</exception>
+        /// <exception cref="IndexOutOfRangeException">
+        /// Incorrect input.</exception>
+        public static int SelectElement()
         {
             
             int chosenPassiveElement = 0;
@@ -85,6 +101,11 @@ namespace ConsoleLoader
             return chosenPassiveElement;
         }
 
+        /// <summary>
+        /// Correction exception.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        /// <param name="inputMessage">Input message.</param>
         private static void ActionHandler
             (Action action, string inputMessage)
         {

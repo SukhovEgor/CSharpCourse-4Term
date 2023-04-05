@@ -4,29 +4,55 @@ namespace Model
 {
     public class InductorCoil : PassiveElementBase
     {
+        /// <summary>
+        /// Inductance.
+        /// </summary>
         private double _inductance;
 
+        /// <summary>
+        /// Frequency
+        /// </summary>
         private double _frequency;
+
+        /// <summary>
+        /// Gets or sets inductance.
+        /// </summary>
         public double Inductance
         {
             get => _inductance;
             set => _inductance = CheckValue(value);
         }
+
+        /// <summary>
+        /// Gets or sets frequency.
+        /// </summary>
         public double Frequency
         {
             get => _frequency;
             set => _frequency = CheckValue(value);
         }
 
+        /// <summary>
+        /// InductorCoil's constructor.
+        /// </summary>
+        /// <param name="inductance"></param>
+        /// <param name="frequency"></param>
         public InductorCoil(double inductance, double frequency)
         {
             Inductance = inductance;
             Frequency = frequency;
         }
 
+        /// <summary>
+        /// InductorCoil's empty constructor.
+        /// </summary>
         public InductorCoil() { }
 
-        public static InductorCoil InputValuesByConsole()
+        /// <summary>
+        /// Entering Inductor Coil's values.
+        /// </summary>
+        /// <returns></returns>
+        public static InductorCoil EnterValues()
         {
             var inductorCoil = new InductorCoil();
 
@@ -56,6 +82,11 @@ namespace Model
             return inductorCoil;
         }
 
+        /// <summary>
+        /// Correction exception.
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="inputMessage"></param>
         private static void ActionHandler
             (Action action, string inputMessage)
         {
@@ -75,12 +106,21 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Calculate complex resistance.
+        /// </summary>
         public override Complex CalculationImpedance => 
             new Complex(0, Math.Round(2 * Math.PI * Frequency * Inductance * Math.Pow(10, -3), 3));
 
-
+        /// <summary>
+        /// Gets output of information about the impedance.
+        /// </summary>
         public override string Impedance =>
             $"Impedance = {CalculationImpedance.Imaginary}j mOhm";
+
+        /// <summary>
+        /// Gets output of information about the element.
+        /// </summary>
         public override string Info =>
             $"\nСharacteristics of the inductor coil:\n" +
             $"Inductance = {Inductance} microH\n" +

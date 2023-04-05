@@ -5,15 +5,25 @@ namespace Model
 {
     public class Resistor : PassiveElementBase
     {
+        /// <summary>
+        /// Resistor's resistance.
+        /// </summary>
         private double _resistance;
-        
+
+        /// <summary>
+        /// Gets or sets resistance.
+        /// </summary>
         public double Resistance
         {
             get => _resistance;
             set => _resistance = CheckValue(value);
         }
 
-        public static Resistor InputValuesByConsole()
+        /// <summary>
+        /// Entering resistance by console.
+        /// </summary>
+        /// <returns></returns>
+        public static Resistor EnterValues()
         {
             var resistor = new Resistor();
 
@@ -36,6 +46,11 @@ namespace Model
             return resistor;
         }
 
+        /// <summary>
+        /// Correction exception.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        /// <param name="inputMessage">Input Message.</param>
         private static void ActionHandler
             (Action action, string inputMessage)
         {
@@ -55,11 +70,21 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Calculate complex resistance.
+        /// </summary>
         public override Complex CalculationImpedance =>
             new Complex(Resistance, 0);
 
+        /// <summary>
+        /// Gets output of information about the impedance.
+        /// </summary>
         public override string Impedance =>
             $"Impedance = {CalculationImpedance.Real} Ohm";
+
+        /// <summary>
+        /// Gets output of information about the element.
+        /// </summary>
         public override string Info =>
             $"\nСharacteristics of the resistor:\n" +
             $"Resistance = {Resistance} Ohm\n" +

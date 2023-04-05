@@ -4,29 +4,55 @@ namespace Model
 {
     public class Capacitor : PassiveElementBase
     {
+        /// <summary>
+        /// Capacity.
+        /// </summary>
         private double _сapacity;
 
+        /// <summary>
+        /// Frequency.
+        /// </summary>
         private double _frequency;
+
+        /// <summary>
+        /// Gets or sets capacity.
+        /// </summary>
         public double Capacity
         {
             get => _сapacity;
             set => _сapacity = CheckValue(value);
         }
+
+        /// <summary>
+        /// Gets or sets frequency.
+        /// </summary>
         public double Frequency
         {
             get => _frequency;
             set => _frequency = CheckValue(value);
         }
 
+        /// <summary>
+        /// Capacitor's constructor.
+        /// </summary>
+        /// <param name="сapacity"></param>
+        /// <param name="frequency"></param>
         public Capacitor(double сapacity, double frequency)
         {
             Capacity = сapacity;
             Frequency = frequency;
         }
 
+        /// <summary>
+        /// Capacitor's empty constructor.
+        /// </summary>
         public Capacitor() { }
 
-        public static Capacitor InputValuesByConsole()
+        /// <summary>
+        /// Entering capacitor's values.
+        /// </summary>
+        /// <returns></returns>
+        public static Capacitor EnterValues()
         {
             var capacitor = new Capacitor();
 
@@ -56,6 +82,11 @@ namespace Model
             return capacitor;
         }
 
+        /// <summary>
+        /// Correction exception.
+        /// </summary>
+        /// <param name="action">Action.</param>
+        /// <param name="inputMessage">Input message.</param>
         private static void ActionHandler
             (Action action, string inputMessage)
         {
@@ -75,11 +106,21 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Calculate complex resistance.
+        /// </summary>
         public override Complex CalculationImpedance =>
             new Complex(0, Math.Round(-1 / (2 * Math.PI * Frequency * Capacity * Math.Pow(10, -6)), 3));
 
+        /// <summary>
+        /// Gets output of information about the impedance.
+        /// </summary>
         public override string Impedance =>
             $"Impedance = {CalculationImpedance.Imaginary}j Ohm";
+
+        /// <summary>
+        /// Gets output of information about the element.
+        /// </summary>
         public override string Info =>
             $"\nСharacteristics of the capacitor:\n" +
             $"Capacity = {Capacity} microF\n" +
