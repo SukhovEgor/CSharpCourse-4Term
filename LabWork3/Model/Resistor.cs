@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Model
 {
-    internal class Resistor
+    public class Resistor : PassiveElementBase
     {
+        private double _resistance;
+        
+        public double Resistance
+        {
+            get => _resistance;
+            set => _resistance = value;
+        }
+
+        public Complex GetImpedance(double resistance)
+        {
+            return CalculationImpedance;
+        }
+        public override Complex CalculationImpedance =>
+            new Complex(Resistance, 0);
+
+        public override string Info =>
+            $"Сharacteristics of the resistor:\n" +
+            $"Resistance = {Resistance} Ohm\n" +
+            $"Impedance = {CalculationImpedance.Real} Ohm";
     }
 }
