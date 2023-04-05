@@ -1,4 +1,4 @@
-﻿using Model;
+using Model;
 
 namespace ConsoleLoader
 {
@@ -40,6 +40,8 @@ namespace ConsoleLoader
                     case 5:
                         cicle = false;
                         break;
+                    default:
+                        break;
                 }
             }
         }
@@ -48,6 +50,7 @@ namespace ConsoleLoader
         /// Show impedance by console.
         /// </summary>
         /// <param name="passiveElementBase">Passive Element.</param>
+        /// <returns>passiveElementBase.</returns>
         public static PassiveElementBase ShowImpedance(PassiveElementBase passiveElementBase)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -65,7 +68,6 @@ namespace ConsoleLoader
         /// Incorrect input.</exception>
         public static int SelectElement()
         {
-            
             int chosenPassiveElement = 0;
 
             var actionList = new List<(Action Action, string)>
@@ -84,9 +86,10 @@ namespace ConsoleLoader
                         throw new IndexOutOfRangeException
                             ("Number must be in range [1; 5].");
                     }
+
                     chosenPassiveElement = tmpChoice;
                     },
-                    
+
                     "\nPlease, enter a number:\n" +
                     "1 - resistor, 2 - inductor coil, 3 - capacitor," +
                     " 4 - print list, 5 - exit:"

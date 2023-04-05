@@ -1,8 +1,10 @@
-﻿using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
+using System.Numerics;
 
 namespace Model
 {
+    /// <summary>
+    /// Class Resistors.
+    /// </summary>
     public class Resistor : PassiveElementBase
     {
         /// <summary>
@@ -22,7 +24,7 @@ namespace Model
         /// <summary>
         /// Entering resistance by console.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>resistor.</returns>
         public static Resistor EnterValues()
         {
             var resistor = new Resistor();
@@ -62,6 +64,7 @@ namespace Model
                     action.Invoke();
                     return;
                 }
+
                 catch (Exception exception)
                 {
                     Console.WriteLine(exception.Message);
@@ -71,7 +74,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Calculate complex resistance.
+        /// Gets calculate complex resistance.
         /// </summary>
         public override Complex CalculationImpedance =>
             new Complex(Resistance, 0);

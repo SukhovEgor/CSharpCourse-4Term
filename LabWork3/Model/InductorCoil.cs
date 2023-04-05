@@ -1,7 +1,10 @@
-﻿using System.Numerics;
+using System.Numerics;
 
 namespace Model
 {
+    /// <summary>
+    /// Class InductorCoil.
+    /// </summary>
     public class InductorCoil : PassiveElementBase
     {
         /// <summary>
@@ -10,7 +13,7 @@ namespace Model
         private double _inductance;
 
         /// <summary>
-        /// Frequency
+        /// Frequency.
         /// </summary>
         private double _frequency;
 
@@ -35,8 +38,8 @@ namespace Model
         /// <summary>
         /// InductorCoil's constructor.
         /// </summary>
-        /// <param name="inductance"></param>
-        /// <param name="frequency"></param>
+        /// <param name="inductance">Inductance.</param>
+        /// <param name="frequency">Frequency.</param>
         public InductorCoil(double inductance, double frequency)
         {
             Inductance = inductance;
@@ -51,7 +54,7 @@ namespace Model
         /// <summary>
         /// Entering Inductor Coil's values.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>InductorCoil.</returns>
         public static InductorCoil EnterValues()
         {
             var inductorCoil = new InductorCoil();
@@ -85,8 +88,8 @@ namespace Model
         /// <summary>
         /// Correction exception.
         /// </summary>
-        /// <param name="action"></param>
-        /// <param name="inputMessage"></param>
+        /// <param name="action">Action.</param>
+        /// <param name="inputMessage">inputMessage.</param>
         private static void ActionHandler
             (Action action, string inputMessage)
         {
@@ -107,10 +110,11 @@ namespace Model
         }
 
         /// <summary>
-        /// Calculate complex resistance.
+        /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex CalculationImpedance => 
-            new Complex(0, Math.Round(2 * Math.PI * Frequency * Inductance * Math.Pow(10, -3), 3));
+        public override Complex CalculationImpedance =>
+            new Complex(0, Math.Round(2 * Math.PI * Frequency
+                * Inductance * Math.Pow(10, -3), 3));
 
         /// <summary>
         /// Gets output of information about the impedance.

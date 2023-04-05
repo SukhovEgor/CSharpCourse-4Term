@@ -1,15 +1,19 @@
-﻿using System.Numerics;
+using System.Numerics;
+
 namespace Model
 {
+    /// <summary>
+    /// Class PassiveElementBase.
+    /// </summary>
     public abstract class PassiveElementBase
     {
         /// <summary>
         /// Minimum value.
         /// </summary>
-        private const int MinValue = 0;
+        private const int _minValue = 0;
 
         /// <summary>
-        /// Calculate complex resistance.
+        /// Gets calculate complex resistance.
         /// </summary>
         public abstract Complex CalculationImpedance { get; }
 
@@ -31,7 +35,7 @@ namespace Model
         /// <exception cref="ArgumentException">Incorrect value.</exception>
         protected static double CheckValue(double value)
         {
-            if (value <= MinValue)
+            if (value <= _minValue)
             {
                 throw new ArgumentException
                     ("The value should not be negative");

@@ -1,7 +1,10 @@
-﻿using System.Numerics;
+using System.Numerics;
 
 namespace Model
 {
+    /// <summary>
+    /// Class Capacitor.
+    /// </summary>
     public class Capacitor : PassiveElementBase
     {
         /// <summary>
@@ -35,8 +38,8 @@ namespace Model
         /// <summary>
         /// Capacitor's constructor.
         /// </summary>
-        /// <param name="сapacity"></param>
-        /// <param name="frequency"></param>
+        /// <param name="сapacity">Capacity.</param>
+        /// <param name="frequency">Frequency.</param>
         public Capacitor(double сapacity, double frequency)
         {
             Capacity = сapacity;
@@ -51,7 +54,7 @@ namespace Model
         /// <summary>
         /// Entering capacitor's values.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Capacitor.</returns>
         public static Capacitor EnterValues()
         {
             var capacitor = new Capacitor();
@@ -107,7 +110,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Calculate complex resistance.
+        /// Gets calculate complex resistance.
         /// </summary>
         public override Complex CalculationImpedance =>
             new Complex(0, Math.Round(-1 / (2 * Math.PI * Frequency * Capacity * Math.Pow(10, -6)), 3));
