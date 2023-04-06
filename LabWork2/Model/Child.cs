@@ -68,7 +68,7 @@ namespace Model
             }
         }
 
-        //TODO: autoproperty
+        //TODO: autoproperty (+)
         /// <summary>
         /// Gets or sets child's school.
         /// </summary>
@@ -76,7 +76,7 @@ namespace Model
         {
             get => _school;
 
-            set => _school = value;
+            set => _school = CheckValue(value);
         }
 
         /// <summary>

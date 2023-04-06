@@ -212,7 +212,7 @@ namespace Model
         /// </summary>
         /// <param name="value">Name or surname.</param>
         /// <returns>Correct string.</returns>
-        private string ConvertToRightRegister(string value)
+        protected string ConvertToRightRegister(string value)
         {
             var symbols = new[] { "-", " " };
             foreach (var symbol in symbols)
@@ -236,5 +236,18 @@ namespace Model
         /// Gets output of iformation about the person.
         /// </summary>
         public abstract string GetInfo();
+
+        protected string CheckValue(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException
+                    ("\nInput must not be empty.");
+            }
+            else
+            {
+                return value;
+            }
+        }
     }
 }

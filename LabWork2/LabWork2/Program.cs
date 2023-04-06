@@ -37,11 +37,11 @@ namespace LabWork2
             {
                 case Adult adult:
                     Console.WriteLine($"\n{adult.GetNameSurname()} " +
-                        $"prefers {adult.GetFavoriteDrink()}");
+                        $"({adult.Age} age) prefers {adult.GetFavoriteDrink()}");
                     break;
                 case Child child:
                     Console.WriteLine($"\n{child.GetNameSurname()}" +
-                        $" has a model of {child.GetShipCollection()}");
+                        $"({child.Age} age) has a model of {child.GetShipCollection()}");
                     break;
                 default:
                     break;

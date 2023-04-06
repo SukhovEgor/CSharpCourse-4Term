@@ -60,7 +60,7 @@ namespace Model
             set => _passportID = CheckPassportID(value);
         }
 
-        //TODO: autoproperty
+        //TODO: autoproperty (+)
         /// <summary>
         /// Company.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Model
         {
             get => _company;
 
-            set => _company = value;
+            set => _company = CheckValue(value);
         }
 
         /// <summary>
@@ -296,5 +296,7 @@ namespace Model
         public Adult()
         {
         }
+
+
     }
 }
