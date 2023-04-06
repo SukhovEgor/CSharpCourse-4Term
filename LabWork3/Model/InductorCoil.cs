@@ -51,87 +51,20 @@ namespace Model
         /// </summary>
         public InductorCoil() { }
 
-        //TODO: remove
-        /// <summary>
-        /// Entering Inductor Coil's values.
-        /// </summary>
-        /// <returns>InductorCoil.</returns>
-        public static InductorCoil EnterValues()
-        {
-            var inductorCoil = new InductorCoil();
-
-            var actionList = new List<(Action Action, string)>
-            {
-                (
-                    () =>
-                    {
-                        inductorCoil.Inductance = Convert.ToDouble(Console.ReadLine());
-                    },
-                    "\nEnter inductance of inductor coil:"
-                ),
-                (
-                    () =>
-                    {
-                        inductorCoil.Frequency = Convert.ToDouble(Console.ReadLine());
-                    },
-                    "\nEnter frequency of inductor coil:"
-                )
-            };
-
-            foreach (var action in actionList)
-            {
-                ActionHandler(action.Action, action.Item2);
-            }
-
-            return inductorCoil;
-        }
-
-        //TODO: duplication
-        /// <summary>
-        /// Correction exception.
-        /// </summary>
-        /// <param name="action">Action.</param>
-        /// <param name="inputMessage">inputMessage.</param>
-        private static void ActionHandler
-            (Action action, string inputMessage)
-        {
-            while (true)
-            {
-                Console.WriteLine(inputMessage);
-                try
-                {
-                    action.Invoke();
-                    return;
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.Message);
-                    Console.WriteLine("Repeat the input");
-                }
-            }
-        }
-
-        //TODO: убрать округления, хранить в СИ
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex CalculationImpedance =>
-            new Complex(0, Math.Round(2 * Math.PI * Frequency
-                * Inductance * Math.Pow(10, -3), 3));
-
-        /// <summary>
-        /// Gets output of information about the impedance.
-        /// </summary>
-        public override string Impedance =>
-            $"Impedance = {CalculationImpedance.Imaginary}j mOhm";
+        public override Complex Impedance =>
+            new Complex(0, 2 * Math.PI * Frequency
+                * Inductance);
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
         public override string Info =>
             $"\nСharacteristics of the inductor coil:\n" +
-            $"Inductance = {Inductance} microH\n" +
+            $"Inductance = {Inductance} H\n" +
             $"Frequency = {Frequency} Hz\n" +
-            $"Impedance = {CalculationImpedance.Imaginary}j mOhm";
+            $"Impedance = {Impedance.Imaginary}j Ohm";
     }
 }

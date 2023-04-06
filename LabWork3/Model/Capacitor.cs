@@ -51,86 +51,25 @@ namespace Model
         /// </summary>
         public Capacitor() { }
 
-        //TODO: remove
-        /// <summary>
-        /// Entering capacitor's values.
-        /// </summary>
-        /// <returns>Capacitor.</returns>
-        public static Capacitor EnterValues()
-        {
-            var capacitor = new Capacitor();
+        // TODO: remove (+)
 
-            var actionList = new List<(Action Action, string)>
-            {
-                (
-                    () =>
-                    {
-                        capacitor.Capacity = Convert.ToDouble(Console.ReadLine());
-                    },
-                    "\nEnter capacity of capacitor:"
-                ),
-                (
-                    () =>
-                    {
-                        capacitor.Frequency = Convert.ToDouble(Console.ReadLine());
-                    },
-                    "\nEnter frequency of capacitor:"
-                )
-            };
+        // TODO: duplication (+)
 
-            foreach (var action in actionList)
-            {
-                ActionHandler(action.Action, action.Item2);
-            }
+        // TODO: убрать округления, хранить в СИ (+)
 
-            return capacitor;
-        }
-
-        //TODO: duplication
-        /// <summary>
-        /// Correction exception.
-        /// </summary>
-        /// <param name="action">Action.</param>
-        /// <param name="inputMessage">Input message.</param>
-        private static void ActionHandler
-            (Action action, string inputMessage)
-        {
-            while (true)
-            {
-                Console.WriteLine(inputMessage);
-                try
-                {
-                    action.Invoke();
-                    return;
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.Message);
-                    Console.WriteLine("Repeat the input");
-                }
-            }
-        }
-
-        //TODO: убрать округления, хранить в СИ
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex CalculationImpedance =>
-            new Complex(0, Math.Round(-1 / (2 * Math.PI * Frequency * Capacity * Math.Pow(10, -6)), 3));
-
-        /// <summary>
-        /// Gets output of information about the impedance.
-        /// </summary>
-        public override string Impedance =>
-            $"Impedance = {CalculationImpedance.Imaginary}j Ohm";
+        public override Complex Impedance =>
+            new Complex(0, -1 / (2 * Math.PI * Frequency * Capacity));
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
         public override string Info =>
             $"\nСharacteristics of the capacitor:\n" +
-            $"Capacity = {Capacity} microF\n" +
+            $"Capacity = {Capacity} F\n" +
             $"Frequency = {Frequency} Hz\n" +
-            $"Impedance = {CalculationImpedance.Imaginary}j Ohm";
+            $"Impedance = {Impedance.Imaginary}j Ohm";
     }
 }

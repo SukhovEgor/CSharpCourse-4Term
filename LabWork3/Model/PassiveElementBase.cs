@@ -12,21 +12,15 @@ namespace Model
         /// </summary>
         private const int _minValue = 0;
 
-        //TODO: rename
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public abstract Complex CalculationImpedance { get; }
+        public abstract Complex Impedance { get; }
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
         public abstract string Info { get; }
-
-        /// <summary>
-        /// Gets output of information about the impedance.
-        /// </summary>
-        public abstract string Impedance { get; }
 
         /// <summary>
         /// Check correct value.
