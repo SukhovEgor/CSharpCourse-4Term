@@ -21,6 +21,7 @@ namespace Model
             set => _resistance = CheckValue(value);
         }
 
+        //TODO: remove
         /// <summary>
         /// Entering resistance by console.
         /// </summary>
@@ -47,7 +48,7 @@ namespace Model
 
             return resistor;
         }
-
+        //TODO: duplication
         /// <summary>
         /// Correction exception.
         /// </summary>

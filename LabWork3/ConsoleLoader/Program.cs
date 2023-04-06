@@ -13,15 +13,17 @@ namespace ConsoleLoader
         public static void Main()
         {
             var elemetList = new List<PassiveElementBase>();
-            bool cicle = true;
-            while (cicle)
+            while (true)
             {
                 switch (SelectElement())
                 {
+                    //TODO: RSDN
                     case 1:
+                    {
                         var resistor = Resistor.EnterValues();
                         elemetList.Add(ShowImpedance(resistor));
                         break;
+                    }
                     case 2:
                         var inductorCoil = InductorCoil.EnterValues();
                         elemetList.Add(ShowImpedance(inductorCoil));
@@ -38,8 +40,7 @@ namespace ConsoleLoader
 
                         break;
                     case 5:
-                        cicle = false;
-                        break;
+                        return;
                     default:
                         break;
                 }
@@ -75,19 +76,19 @@ namespace ConsoleLoader
                 (
                     () =>
                     {
-                    if (!int.TryParse(Console.ReadLine(), out int tmpChoice))
-                    {
-                        throw new ArgumentException
-                           ("Enter a number.");
-                    }
+                        if (!int.TryParse(Console.ReadLine(), out int tmpChoice))
+                        {
+                            throw new ArgumentException
+                               ("Enter a number.");
+                        }
 
-                    if (tmpChoice < 1 || tmpChoice > 5)
-                    {
-                        throw new IndexOutOfRangeException
-                            ("Number must be in range [1; 5].");
-                    }
+                        if (tmpChoice < 1 || tmpChoice > 5)
+                        {
+                            throw new IndexOutOfRangeException
+                                ("Number must be in range [1; 5].");
+                        }
 
-                    chosenPassiveElement = tmpChoice;
+                        chosenPassiveElement = tmpChoice;
                     },
 
                     "\nPlease, enter a number:\n" +

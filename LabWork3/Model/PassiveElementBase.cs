@@ -12,6 +12,7 @@ namespace Model
         /// </summary>
         private const int _minValue = 0;
 
+        //TODO: rename
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>

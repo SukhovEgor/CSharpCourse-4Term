@@ -51,6 +51,7 @@ namespace Model
         /// </summary>
         public Capacitor() { }
 
+        //TODO: remove
         /// <summary>
         /// Entering capacitor's values.
         /// </summary>
@@ -85,6 +86,7 @@ namespace Model
             return capacitor;
         }
 
+        //TODO: duplication
         /// <summary>
         /// Correction exception.
         /// </summary>
@@ -109,6 +111,7 @@ namespace Model
             }
         }
 
+        //TODO: убрать округления, хранить в СИ
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>

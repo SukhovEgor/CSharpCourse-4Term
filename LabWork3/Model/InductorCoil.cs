@@ -51,6 +51,7 @@ namespace Model
         /// </summary>
         public InductorCoil() { }
 
+        //TODO: remove
         /// <summary>
         /// Entering Inductor Coil's values.
         /// </summary>
@@ -85,6 +86,7 @@ namespace Model
             return inductorCoil;
         }
 
+        //TODO: duplication
         /// <summary>
         /// Correction exception.
         /// </summary>
@@ -109,6 +111,7 @@ namespace Model
             }
         }
 
+        //TODO: убрать округления, хранить в СИ
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
