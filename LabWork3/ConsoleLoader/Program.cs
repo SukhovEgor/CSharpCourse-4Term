@@ -15,26 +15,13 @@ namespace ConsoleLoader
             var elemetList = new List<PassiveElementBase>();
             while (true)
             {
-                switch (SelectElement())
+                var inputMenuNumber = SelectElement();                
+                switch (inputMenuNumber)
                 {
                     case 1:
-                        {
-                            elemetList.Add(ShowImpedance(EnterValues(1)));
-                            break;
-                        }
-
                     case 2:
-                        {
-                            elemetList.Add(ShowImpedance(EnterValues(2)));
-                            break;
-                        }
-
                     case 3:
-                        {
-                            elemetList.Add(ShowImpedance(EnterValues(3)));
-                            break;
-                        }
-
+                        elemetList.Add(ShowImpedance(EnterValues(inputMenuNumber)));
                     case 4:
                         {
                             foreach (var tmpElement in elemetList)
@@ -65,7 +52,7 @@ namespace ConsoleLoader
             (PassiveElementBase passiveElementBase)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-
+            //TODO: const
             double realResistance = Math.Round
                 (passiveElementBase.Impedance.Real, 4);
             double imaginaryResistance = Math.Round
@@ -124,6 +111,7 @@ namespace ConsoleLoader
         /// <summary>
         /// fg.
         /// </summary>
+        /// //TODO: другой тип
         /// <param name="elementType">k.</param>
         /// <returns>k.</returns>
         /// <exception cref="ArgumentException">k.</exception>

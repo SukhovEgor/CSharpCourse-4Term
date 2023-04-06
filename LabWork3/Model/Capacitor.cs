@@ -51,12 +51,6 @@ namespace Model
         /// </summary>
         public Capacitor() { }
 
-        // TODO: remove (+)
-
-        // TODO: duplication (+)
-
-        // TODO: убрать округления, хранить в СИ (+)
-
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
