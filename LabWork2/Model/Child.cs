@@ -68,6 +68,7 @@ namespace Model
             }
         }
 
+        //TODO: autoproperty
         /// <summary>
         /// Gets or sets child's school.
         /// </summary>

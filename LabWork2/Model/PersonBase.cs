@@ -46,7 +46,6 @@ namespace Model
 
             set
             {
-                //TODO: (+)
                 _name = ConvertToRightRegister(value);
 
                 if (_surname != null)
@@ -65,7 +64,6 @@ namespace Model
 
             set
             {
-                //TODO: (+)
                 _surname = ConvertToRightRegister(value);
 
                 if (_name != null)
@@ -234,7 +232,6 @@ namespace Model
                     value.Substring(1, value.Length - 1).ToLower();
         }
 
-        //TODO: rename (+)
         /// <summary>
         /// Gets output of iformation about the person.
         /// </summary>
