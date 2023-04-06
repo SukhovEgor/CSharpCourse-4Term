@@ -60,7 +60,6 @@ namespace Model
             set => _passportID = CheckPassportID(value);
         }
 
-        //TODO: autoproperty (+)
         /// <summary>
         /// Company.
         /// </summary>
