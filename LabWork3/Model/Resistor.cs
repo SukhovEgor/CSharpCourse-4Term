@@ -32,7 +32,6 @@ namespace Model
         /// </summary>
         public override string Info =>
             $"\nСharacteristics of the resistor:\n" +
-            $"Resistance = {Resistance} Ohm\n" +
-            $"Impedance = {Impedance.Real} + 0j Ohm";
+            $"Resistance = {Resistance} Ohm";
     }
 }

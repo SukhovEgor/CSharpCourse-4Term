@@ -64,7 +64,6 @@ namespace Model
         public override string Info =>
             $"\nСharacteristics of the inductor coil:\n" +
             $"Inductance = {Inductance} H\n" +
-            $"Frequency = {Frequency} Hz\n" +
-            $"Impedance = {Impedance.Imaginary}j Ohm";
+            $"Frequency = {Frequency} Hz";
     }
 }

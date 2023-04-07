@@ -63,7 +63,6 @@ namespace Model
         public override string Info =>
             $"\nСharacteristics of the capacitor:\n" +
             $"Capacity = {Capacity} F\n" +
-            $"Frequency = {Frequency} Hz\n" +
-            $"Impedance = {Impedance.Imaginary}j Ohm";
+            $"Frequency = {Frequency} Hz";
     }
 }
