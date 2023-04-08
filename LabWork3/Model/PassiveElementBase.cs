@@ -15,12 +15,20 @@ namespace Model
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public abstract Complex Impedance { get; }
+        public abstract Complex Impedance
+        {
+            // TODO: Это должен быть метод
+            get;
+        }
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
-        public abstract string Info { get; }
+        public abstract string Info
+        {
+            // TODO: Это должен быть метод
+            get;
+        }
 
         /// <summary>
         /// Check correct value.
@@ -35,10 +43,8 @@ namespace Model
                 throw new ArgumentException
                     ("The value should not be negative");
             }
-            else
-            {
-                return value;
-            }
+
+            return value;
         }
 
     }

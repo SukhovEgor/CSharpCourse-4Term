@@ -2,6 +2,8 @@ using System.Numerics;
 
 namespace Model
 {
+    // TODO: добавить конструктор
+
     /// <summary>
     /// Class InductorCoil.
     /// </summary>

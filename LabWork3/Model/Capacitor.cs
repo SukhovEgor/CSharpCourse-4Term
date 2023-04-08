@@ -2,6 +2,8 @@ using System.Numerics;
 
 namespace Model
 {
+    // TODO: добавить конструктор
+
     /// <summary>
     /// Class Capacitor.
     /// </summary>
@@ -62,7 +64,7 @@ namespace Model
         /// </summary>
         public override string Info =>
             $"\nСharacteristics of the capacitor:\n" +
-            $"Capacity = {Capacity} F\n" +
-            $"Frequency = {Frequency} Hz";
+                $"Capacity = {Capacity} F\n" +
+                $"Frequency = {Frequency} Hz";
     }
 }

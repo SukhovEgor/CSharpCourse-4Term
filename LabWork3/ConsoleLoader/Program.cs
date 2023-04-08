@@ -12,51 +12,61 @@ namespace ConsoleLoader
         /// </summary>
         public static void Main()
         {
-            var elemetList = new List<PassiveElementBase>();
+            var elementList = new List<PassiveElementBase>();
             while (true)
             {
-                switch (SelectElement())
+                try
                 {
-                    case 1:
-                        {
-                            elemetList.Add(ShowImpedance
-                                (EnterValues(PassiveElementType.Resistor)));
-                            break;
-                        }
-
-                    case 2:
-                        {
-                            elemetList.Add(ShowImpedance
-                                (EnterValues
-                                (PassiveElementType.InductorCoil)));
-                            break;
-                        }
-
-                    case 3:
-                        {
-                            elemetList.Add(ShowImpedance
-                                (EnterValues(PassiveElementType.Capacitor)));
-                            break;
-                        }
-
-                    case 4:
-                        {
-                            foreach (var tmpElement in elemetList)
+                    switch (SelectElement())
+                    {
+                        case 1:
                             {
-                                Console.WriteLine(tmpElement.Info);
-                                RoundImpedance(tmpElement, 4);
+                                elementList.Add(ShowImpedance
+                                    (EnterValues(PassiveElementType.Resistor)));
+                                break;
                             }
 
+                        case 2:
+                            {
+                                elementList.Add(ShowImpedance
+                                    (EnterValues
+                                    (PassiveElementType.InductorCoil)));
+                                break;
+                            }
+
+                        case 3:
+                            {
+                                elementList.Add(ShowImpedance
+                                    (EnterValues(PassiveElementType.Capacitor)));
+                                break;
+                            }
+
+                        case 4:
+                            {
+                                foreach (var tmpElement in elementList)
+                                {
+                                    Console.WriteLine(tmpElement.Info);
+                                    RoundImpedance(tmpElement, 4);
+                                }
+
+                                break;
+                            }
+
+                        case 5:
+                            {
+                                return;
+                            }
+
+                        default:
                             break;
-                        }
 
-                    case 5:
-                        {
-                            return;
-                        }
+                    }
 
-                    default:
-                        break;
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                    Console.WriteLine("Repeat the input");
                 }
             }
         }
@@ -72,6 +82,8 @@ namespace ConsoleLoader
             Console.ForegroundColor = ConsoleColor.Yellow;
             RoundImpedance(passiveElementBase, 4);
             Console.ForegroundColor = ConsoleColor.White;
+
+            // TODO: ShowImpedance не должен возвращать значение
             return passiveElementBase;
         }
 
@@ -91,6 +103,7 @@ namespace ConsoleLoader
             double imaginaryResistance = Math.Round
                 (passiveElementBase.Impedance.Imaginary, digits);
 
+            // TODO: Вывод перенести в ShowImpedance
             Console.WriteLine($"Impedance = {realResistance}" +
                 $" + ({imaginaryResistance})j Ohm");
         }
@@ -106,6 +119,7 @@ namespace ConsoleLoader
         {
             int chosenPassiveElement = 0;
 
+            // TODO: убрать Action
             var actionList = new List<(Action Action, string)>
             {
                 (
@@ -155,8 +169,12 @@ namespace ConsoleLoader
             {
                 case PassiveElementType.Resistor:
                     {
-                        elementObject = new Resistor();
-                        break;
+                        Console.WriteLine("\nEnter resistence of resistor:");
+                        var res = new Resistor()
+                        {
+                            Resistance = Convert.ToDouble(Console.ReadLine())
+                        };
+                        return res;
                     }
 
                 case PassiveElementType.InductorCoil:
@@ -177,6 +195,7 @@ namespace ConsoleLoader
                     }
             }
 
+            // TODO: убрать Actions, объединить с switch-case
             var actionResistor = new List<(Action Action, string)>
             {
                 (
@@ -265,6 +284,7 @@ namespace ConsoleLoader
         private static void ActionHandler
             (Action action, string inputMessage)
         {
+            // TODO: объединить с главным while(true)
             while (true)
             {
                 Console.WriteLine(inputMessage);
