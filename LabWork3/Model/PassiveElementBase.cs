@@ -12,23 +12,21 @@ namespace Model
         /// </summary>
         private const int _minValue = 0;
 
+        // TODO: Это должен быть метод (+)
+
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public abstract Complex Impedance
-        {
-            // TODO: Это должен быть метод
-            get;
-        }
+        /// <returns>Complex resistance.</returns>
+        public abstract Complex GetImpedance();
+
+        // TODO: Это должен быть метод (+)
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
-        public abstract string Info
-        {
-            // TODO: Это должен быть метод
-            get;
-        }
+        /// <returns>Info.</returns>
+        public abstract string GetInfo();
 
         /// <summary>
         /// Check correct value.

@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Model
 {
-    // TODO: добавить конструктор
+    // TODO: добавить конструктор (+)
 
     /// <summary>
     /// Class InductorCoil.
@@ -56,14 +56,16 @@ namespace Model
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex Impedance =>
+        /// <returns>Impedance.</returns>
+        public override Complex GetImpedance() =>
             new Complex(0, 2 * Math.PI * Frequency
                 * Inductance);
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
-        public override string Info =>
+        /// <returns>Info.</returns>
+        public override string GetInfo() =>
             $"\nСharacteristics of the inductor coil:\n" +
             $"Inductance = {Inductance} H\n" +
             $"Frequency = {Frequency} Hz";

@@ -2,8 +2,6 @@ using System.Numerics;
 
 namespace Model
 {
-    // TODO: добавить конструктор
-
     /// <summary>
     /// Class Resistors.
     /// </summary>
@@ -23,16 +21,34 @@ namespace Model
             set => _resistance = CheckValue(value);
         }
 
+        // TODO: добавить конструктор (+)
+
+        /// <summary>
+        /// Resistor's constructor.
+        /// </summary>
+        /// <param name="resistance">Resistance.</param>
+        public Resistor(double resistance)
+        {
+            Resistance = resistance;
+        }
+
+        /// <summary>
+        /// Resistor's empty constructor.
+        /// </summary>
+        public Resistor() { }
+
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex Impedance =>
+        /// <returns>Impedance.</returns>
+        public override Complex GetImpedance() =>
             new Complex(Resistance, 0);
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
-        public override string Info =>
+        /// <returns>Info.</returns>
+        public override string GetInfo() =>
             $"\nСharacteristics of the resistor:\n" +
             $"Resistance = {Resistance} Ohm";
     }
