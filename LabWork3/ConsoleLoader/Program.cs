@@ -19,23 +19,22 @@ namespace ConsoleLoader
                 {
                     case 1:
                         {
-                            elemetList.Add(ShowImpedance
-                                (EnterValues(PassiveElementType.Resistor)));
+                            elemetList.Add(ShowImpedance(
+                                EnterValues(PassiveElementType.Resistor)));
                             break;
                         }
 
                     case 2:
                         {
-                            elemetList.Add(ShowImpedance
-                                (EnterValues
-                                (PassiveElementType.InductorCoil)));
+                            elemetList.Add(ShowImpedance(
+                                EnterValues(PassiveElementType.InductorCoil)));
                             break;
                         }
 
                     case 3:
                         {
-                            elemetList.Add(ShowImpedance
-                                (EnterValues(PassiveElementType.Capacitor)));
+                            elemetList.Add(ShowImpedance(
+                                EnterValues(PassiveElementType.Capacitor)));
                             break;
                         }
 
@@ -74,8 +73,6 @@ namespace ConsoleLoader
             Console.ForegroundColor = ConsoleColor.White;
             return passiveElementBase;
         }
-
-        // TODO: const (+)
 
         /// <summary>
         /// Get round value of Impedance.
@@ -140,8 +137,6 @@ namespace ConsoleLoader
             return chosenPassiveElement;
         }
 
-        // TODO: другой тип(+)
-
         /// <summary>
         /// Enter element's parameters.
         /// </summary>
@@ -182,10 +177,9 @@ namespace ConsoleLoader
                 (
                     () =>
                     {
-                        Resistor resistor =
-                            (Resistor)elementObject;
-                        resistor.Resistance = Convert.ToDouble
-                        (Console.ReadLine());
+                        var resistor = (Resistor)elementObject;
+                        resistor.Resistance =
+                            Convert.ToDouble(Console.ReadLine());
                     },
                     "\nEnter resistence of resistor:"
                 )
@@ -196,20 +190,18 @@ namespace ConsoleLoader
                 (
                     () =>
                     {
-                        InductorCoil inductorCoil =
-                            (InductorCoil)elementObject;
-                        inductorCoil.Inductance = Convert.ToDouble
-                        (Console.ReadLine());
+                        var inductorCoil = (InductorCoil)elementObject;
+                        inductorCoil.Inductance =
+                            Convert.ToDouble(Console.ReadLine());
                     },
                     "\nEnter inductance of inductor coil:"
                 ),
                 (
                     () =>
                     {
-                        InductorCoil inductorCoil =
-                            (InductorCoil)elementObject;
-                        inductorCoil.Frequency = Convert.ToDouble
-                        (Console.ReadLine());
+                        var inductorCoil = (InductorCoil)elementObject;
+                        inductorCoil.Frequency =
+                            Convert.ToDouble(Console.ReadLine());
                     },
                     "\nEnter frequency of inductor coil:"
                 )
@@ -220,20 +212,18 @@ namespace ConsoleLoader
                 (
                     () =>
                     {
-                        Capacitor capacitor =
-                            (Capacitor)elementObject;
-                        capacitor.Capacity = Convert.ToDouble
-                        (Console.ReadLine());
+                        var capacitor = (Capacitor)elementObject;
+                        capacitor.Capacity =
+                            Convert.ToDouble(Console.ReadLine());
                     },
                     "\nEnter capacity of capacitor:"
                 ),
                 (
                     () =>
                     {
-                        Capacitor capacitor =
-                            (Capacitor)elementObject;
-                        capacitor.Frequency = Convert.ToDouble
-                        (Console.ReadLine());
+                        var capacitor = (Capacitor)elementObject;
+                        capacitor.Frequency =
+                            Convert.ToDouble(Console.ReadLine());
                     },
                     "\nEnter frequency of capacitor:"
                 )
