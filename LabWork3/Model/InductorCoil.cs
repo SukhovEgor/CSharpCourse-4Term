@@ -54,7 +54,7 @@ namespace Model
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex Impedance =>
+        public override Complex GetImpedance =>
             new Complex(0, 2 * Math.PI * Frequency
                 * Inductance);
 

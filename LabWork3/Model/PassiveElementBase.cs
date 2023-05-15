@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.ComponentModel;
 
 namespace Model
 {
@@ -13,13 +14,30 @@ namespace Model
         private const int _minValue = 0;
 
         /// <summary>
+        /// Gets type of passive element for DataGridView.
+        /// </summary>
+        public abstract string PassiveElement { get; }
+
+        /// <summary>
+        /// Gets parameters for DataGridView.
+        /// </summary>
+        public abstract string Parameters { get; }
+
+        /// <summary>
+        /// Gets impedance for DataGridView.
+        /// </summary>
+        public abstract string Impedance { get; }
+
+        /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public abstract Complex Impedance { get; }
+        [Browsable(false)]
+        public abstract Complex GetImpedance { get; }
 
         /// <summary>
         /// Gets output of information about the element.
         /// </summary>
+        [Browsable(false)]
         public abstract string Info { get; }
 
         /// <summary>

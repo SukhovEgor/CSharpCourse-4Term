@@ -18,6 +18,22 @@ namespace Model
         private double _frequency;
 
         /// <summary>
+        /// Gets type of passive element for DataGridView.
+        /// </summary>
+        public override string PassiveElement => "Capacitor";
+
+        /// <summary>
+        /// Gets parameters for DataGridView.
+        /// </summary>
+        public override string Parameters =>
+            $"Capacity = {Capacity} F\n" +
+            $"Frequency = {Frequency} Hz";
+
+        /// <summary>
+        /// Gets impedance for DataGridView.
+        /// </summary>
+        public override string Impedance => $"Resistance = {Resistance} Ohm";
+        /// <summary>
         /// Gets or sets capacity.
         /// </summary>
         public double Capacity
@@ -54,7 +70,7 @@ namespace Model
         /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
-        public override Complex Impedance =>
+        public override Complex GetImpedance =>
             new Complex(0, -1 / (2 * Math.PI * Frequency * Capacity));
 
         /// <summary>
