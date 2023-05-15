@@ -26,13 +26,14 @@ namespace Model
         /// Gets parameters for DataGridView.
         /// </summary>
         public override string Parameters =>
-            $"Capacity = {Capacity} F\n" +
-            $"Frequency = {Frequency} Hz";
+            $"C = {Capacity} F, " +
+            $"f = {Frequency} Hz";
 
         /// <summary>
         /// Gets impedance for DataGridView.
         /// </summary>
-        public override string Impedance => $"Resistance = {Resistance} Ohm";
+        public override string Impedance => RoundImpedance(GetImpedance, 3);
+
         /// <summary>
         /// Gets or sets capacity.
         /// </summary>

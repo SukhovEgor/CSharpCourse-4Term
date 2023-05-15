@@ -59,5 +59,24 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Get round value of Impedance.
+        /// </summary>
+        /// <param name="complex">Passive Element.</param>
+        /// <param name="digits">Digits.</param>
+        /// <returns>impedance.</returns>
+        public static string RoundImpedance
+            (Complex complex, int digits)
+        {
+
+            double realResistance = Math.Round
+                (complex.Real, digits);
+            double imaginaryResistance = Math.Round
+                (complex.Imaginary, digits);
+
+            return ($"{realResistance}" +
+                $" + ({imaginaryResistance})j Ohm");
+        }
+
     }
 }

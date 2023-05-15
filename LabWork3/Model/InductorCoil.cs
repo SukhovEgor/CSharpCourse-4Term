@@ -18,6 +18,23 @@ namespace Model
         private double _frequency;
 
         /// <summary>
+        /// Gets type of passive element for DataGridView.
+        /// </summary>
+        public override string PassiveElement => "Inductor Coil";
+
+        /// <summary>
+        /// Gets parameters for DataGridView.
+        /// </summary>
+        public override string Parameters =>
+            $"L = {Inductance} F, " +
+            $"f = {Frequency} Hz";
+
+        /// <summary>
+        /// Gets impedance for DataGridView.
+        /// </summary>
+        public override string Impedance => RoundImpedance(GetImpedance, 3);
+
+        /// <summary>
         /// Gets or sets inductance.
         /// </summary>
         public double Inductance
