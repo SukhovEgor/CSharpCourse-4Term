@@ -33,5 +33,21 @@ namespace WinFormsApp
 
             addToolStripMenuItem.Enabled = false;
         }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _elementList.Clear();
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ElementDataGridView.SelectedCells.Count != 0)
+            {
+                foreach (DataGridViewRow row in ElementDataGridView.SelectedRows)
+                {
+                    _elementList.Remove(row.DataBoundItem as PassiveElementBase);
+                }
+            }
+        }
     }
 }
