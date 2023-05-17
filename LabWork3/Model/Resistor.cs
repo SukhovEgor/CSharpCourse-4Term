@@ -37,6 +37,20 @@ namespace Model
         }
 
         /// <summary>
+        /// Resistor's constructor.
+        /// </summary>
+        /// <param name="resistance">resistance.</param>
+        public Resistor(double resistance)
+        {
+            Resistance = resistance;
+        }
+
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        public Resistor() { }
+
+        /// <summary>
         /// Gets calculate complex resistance.
         /// </summary>
         public override Complex GetImpedance =>

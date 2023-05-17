@@ -15,20 +15,17 @@ namespace WinFormsApp
     {
         private readonly Dictionary<string, UserControl> _comboBoxToUserControl;
 
-        private readonly Dictionary<string, Func<PassiveElementBase>> _comboBoxToElement;
+        private EventHandler<ElementEventArgs> _elementEventHandler;
 
-        private BindingList<PassiveElementBase> _elementListAdding;
+        public EventHandler<ElementEventArgs> ElementEventHandler { get; set; }
 
-        public EnterForm(BindingList<PassiveElementBase> elementList)
+        public EnterForm()
         {
             InitializeComponent();
-
-            _elementListAdding = elementList;
-
 #if DEBUG
             AddRandomElementButton.Visible = true;
 #endif
-            /*
+            
             string[] elementTypes = { "Resistor", "Capacitor", "InductorCoil" };
             _comboBoxToUserControl = new Dictionary<string, UserControl>()
             {
@@ -39,33 +36,6 @@ namespace WinFormsApp
 
             ElementTypesComboBox.Items.AddRange(elementTypes);
 
-            _comboBoxToElement = new Dictionary<string, Func<PassiveElementBase>>()
-            {
-                {elementTypes[0], resistorUserControl1.GetElement},
-                {elementTypes[1], capacitorUserControl1.GetElement},
-                {elementTypes[2], inductorCoilUserControl1.GetElement},
-            };
-
-            ElementTypesComboBox.SelectedIndexChanged +=
-                ElementTypesComboBox_SelectedIndexChanged;*/
-            //string[] elementTypes = { "Resistor", "Capacitor", "InductorCoil" };
-            _comboBoxToUserControl = new Dictionary<string, UserControl>()
-            {
-                {"Resistor", resistorUserControl1},
-                {"Capacitor", capacitorUserControl1},
-                {"InductorCoil", inductorCoilUserControl1},
-            };
-
-            ElementTypesComboBox.Items.AddRange(_comboBoxToUserControl.Keys.
-                ToArray());
-
-            _comboBoxToElement = new Dictionary<string, Func<PassiveElementBase>>()
-            {
-                {"Resistor", resistorUserControl1.GetElement},
-                {"Capacitor", capacitorUserControl1.GetElement},
-                {"InductorCoil", inductorCoilUserControl1.GetElement},
-            };
-
             ElementTypesComboBox.SelectedIndexChanged +=
                 ElementTypesComboBox_SelectedIndexChanged;
         }
@@ -74,12 +44,12 @@ namespace WinFormsApp
         {
             string selectedElement = ElementTypesComboBox.SelectedItem.ToString();
 
-            foreach (var (elementType, userControl) in _comboBoxToUserControl)
+            foreach (var (key, value) in _comboBoxToUserControl)
             {
-                userControl.Visible = false;
-                if (selectedElement == elementType)
+                value.Visible = false;
+                if (selectedElement == key)
                 {
-                    userControl.Visible = true;
+                    value.Visible = true;
                 }
             }
         }
@@ -92,13 +62,11 @@ namespace WinFormsApp
             }
             else
             {
-                foreach (var (key, value) in _comboBoxToElement)
-                {
-                    if (ElementTypesComboBox.SelectedItem.ToString() == key)
-                    {
-                        _elementListAdding.Add(value.Invoke());
-                    }
-                }
+                var selectedElement = ElementTypesComboBox.SelectedItem.ToString();
+                var selectedElementControl = _comboBoxToUserControl[selectedElement];
+                var eventArgs = new ElementEventArgs
+                    (((ElementBaseUserControl)selectedElementControl).GetElement());
+                ElementEventHandler?.Invoke(this, eventArgs);
             }
 
         }
@@ -111,21 +79,35 @@ namespace WinFormsApp
         private void AddRandomElementButton_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-
+            /*
             ElementTypesComboBox.SelectedIndex = random.Next(0, 3);
 
             foreach (TextBox textbox in Controls.OfType<TextBox>())
             {
                 if (textbox.Visible && String.IsNullOrEmpty(textbox.Text))
                 {
-                    textbox.Focus();
                     textbox.Text = random.Next(1, 100).ToString();
                 }
-            }
+            }*/
+
+            var elementTypes = new Dictionary<int, PassiveElementType>
+            {
+                {0, PassiveElementType.Resistor },
+                {1, PassiveElementType.Capacitor },
+                {2, PassiveElementType.InductorCoil}
+            };
+
+            var randomType = random.Next(elementTypes.Count);
+            var randomElement = 
+                new RandomPassiveElement()
+                .GetRandomParameters(elementTypes[randomType]);
+            var eventArgs = new ElementEventArgs(randomElement);
+            ElementEventHandler?.Invoke(this, eventArgs);
         }
 
         private void EnterForm_Load(object sender, EventArgs e)
         {
+            OKButton.Focus();
             resistorUserControl1.Visible = false;
             capacitorUserControl1.Visible = false;
             inductorCoilUserControl1.Visible = false;
