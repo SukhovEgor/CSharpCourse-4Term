@@ -1,8 +1,15 @@
 using System.Numerics;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace Model
 {
+    /// <summary>
+    /// Types for XmlSerializer.
+    /// </summary>
+    [XmlInclude(typeof(Resistor))]
+    [XmlInclude(typeof(Capacitor))]
+    [XmlInclude(typeof(InductorCoil))]
     /// <summary>
     /// Class PassiveElementBase.
     /// </summary>

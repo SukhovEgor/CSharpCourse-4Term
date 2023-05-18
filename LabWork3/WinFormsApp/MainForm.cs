@@ -1,5 +1,7 @@
 using Model;
 using System.ComponentModel;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace WinFormsApp
 {
@@ -49,5 +51,55 @@ namespace WinFormsApp
                 }
             }
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fileBrowser = new SaveFileDialog
+            {
+                Filter = "PassiveElement (*.pelmt)|*.pelmt"
+            };
+
+            fileBrowser.ShowDialog();
+            var path = fileBrowser.FileName;
+
+            var xmlSerializer = new XmlSerializer(typeof(BindingList<PassiveElementBase>));
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            using (var file = File.Create(path))
+            {
+                xmlSerializer.Serialize(file, ElementDataGridView.DataSource);
+                file.Close();
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fileBrowser = new OpenFileDialog
+            {
+                Filter = "PassiveElement (*.pelmt)|*.pelmt"
+            };
+
+            fileBrowser.ShowDialog();
+            var path = fileBrowser.FileName;
+
+            
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            var xmlSerializer = new XmlSerializer(typeof(BindingList<PassiveElementBase>));
+
+            using (var file = new StreamReader(path))
+            {
+                _elementList = (BindingList<PassiveElementBase>)xmlSerializer.Deserialize(file);
+            }
+
+            ElementDataGridView.DataSource = _elementList;
+        }
+
     }
 }
