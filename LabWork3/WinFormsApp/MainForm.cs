@@ -16,42 +16,6 @@ namespace WinFormsApp
             ElementDataGridView.DataSource = source;
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var newEnterForm = new EnterForm();
-
-            newEnterForm.Show();
-
-            newEnterForm.ElementEventHandler += (_, args) =>
-            {
-                _elementList.Add(args.PassiveElement);
-                ElementDataGridView.DataSource = _elementList;
-            };
-
-            newEnterForm.Closed += (_, _) =>
-            {
-                addToolStripMenuItem.Enabled = true;
-            };
-
-            addToolStripMenuItem.Enabled = false;
-        }
-
-        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _elementList.Clear();
-        }
-
-        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ElementDataGridView.SelectedCells.Count != 0)
-            {
-                foreach (DataGridViewRow row in ElementDataGridView.SelectedRows)
-                {
-                    _elementList.Remove(row.DataBoundItem as PassiveElementBase);
-                }
-            }
-        }
-
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var fileBrowser = new SaveFileDialog
@@ -101,5 +65,45 @@ namespace WinFormsApp
             ElementDataGridView.DataSource = _elementList;
         }
 
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            var newEnterForm = new EnterForm();
+
+            newEnterForm.Show();
+
+            newEnterForm.ElementEventHandler += (_, args) =>
+            {
+                _elementList.Add(args.PassiveElement);
+                ElementDataGridView.DataSource = _elementList;
+            };
+
+            newEnterForm.Closed += (_, _) =>
+            {
+                AddButton.Enabled = true;
+            };
+
+            AddButton.Enabled = false;
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            if (ElementDataGridView.SelectedCells.Count != 0)
+            {
+                foreach (DataGridViewRow row in ElementDataGridView.SelectedRows)
+                {
+                    _elementList.Remove(row.DataBoundItem as PassiveElementBase);
+                }
+            }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            _elementList.Clear();
+        }
+
+        private void FilterButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace WinFormsApp
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ElementTypesComboBox.SelectedItem.ToString()))
+            if (string.IsNullOrEmpty(ElementTypesComboBox.Text.ToString()))
             {
                 Close();
             }

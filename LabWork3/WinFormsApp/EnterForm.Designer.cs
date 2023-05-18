@@ -133,6 +133,7 @@
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.AddRandomElementButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Name = "EnterForm";
             this.Text = "EnterForm";
             this.Load += new System.EventHandler(this.EnterForm_Load);
