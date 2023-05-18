@@ -10,6 +10,7 @@ namespace Model
     [XmlInclude(typeof(Resistor))]
     [XmlInclude(typeof(Capacitor))]
     [XmlInclude(typeof(InductorCoil))]
+
     /// <summary>
     /// Class PassiveElementBase.
     /// </summary>

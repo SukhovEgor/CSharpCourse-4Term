@@ -29,33 +29,51 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.OKButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.impedanceUserControl1 = new WinFormsApp.ImpedanceUserControl();
-            this.impedanceUserControl2 = new WinFormsApp.ImpedanceUserControl();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.impedanceUserControl3 = new WinFormsApp.ImpedanceUserControl();
+            this.impedanceUserControl4 = new WinFormsApp.ImpedanceUserControl();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.impedanceUserControl4);
+            this.groupBox1.Controls.Add(this.impedanceUserControl3);
             this.groupBox1.Controls.Add(this.OKButton);
             this.groupBox1.Controls.Add(this.CancelButton);
-            this.groupBox1.Controls.Add(this.impedanceUserControl2);
-            this.groupBox1.Controls.Add(this.impedanceUserControl1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(291, 260);
+            this.groupBox1.Size = new System.Drawing.Size(291, 269);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
+            // 
+            // OKButton
+            // 
+            this.OKButton.Location = new System.Drawing.Point(24, 219);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(94, 29);
+            this.OKButton.TabIndex = 4;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(158, 219);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(94, 29);
+            this.CancelButton.TabIndex = 5;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -92,37 +110,19 @@
             this.checkedListBox1.Size = new System.Drawing.Size(152, 70);
             this.checkedListBox1.TabIndex = 0;
             // 
-            // impedanceUserControl1
+            // impedanceUserControl3
             // 
-            this.impedanceUserControl1.Location = new System.Drawing.Point(58, 130);
-            this.impedanceUserControl1.Name = "impedanceUserControl1";
-            this.impedanceUserControl1.Size = new System.Drawing.Size(220, 42);
-            this.impedanceUserControl1.TabIndex = 3;
+            this.impedanceUserControl3.Location = new System.Drawing.Point(58, 130);
+            this.impedanceUserControl3.Name = "impedanceUserControl3";
+            this.impedanceUserControl3.Size = new System.Drawing.Size(227, 42);
+            this.impedanceUserControl3.TabIndex = 6;
             // 
-            // impedanceUserControl2
+            // impedanceUserControl4
             // 
-            this.impedanceUserControl2.Location = new System.Drawing.Point(58, 171);
-            this.impedanceUserControl2.Name = "impedanceUserControl2";
-            this.impedanceUserControl2.Size = new System.Drawing.Size(220, 42);
-            this.impedanceUserControl2.TabIndex = 1;
-            // 
-            // OKButton
-            // 
-            this.OKButton.Location = new System.Drawing.Point(24, 219);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(94, 29);
-            this.OKButton.TabIndex = 4;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(158, 219);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(94, 29);
-            this.CancelButton.TabIndex = 5;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.impedanceUserControl4.Location = new System.Drawing.Point(58, 171);
+            this.impedanceUserControl4.Name = "impedanceUserControl4";
+            this.impedanceUserControl4.Size = new System.Drawing.Size(229, 42);
+            this.impedanceUserControl4.TabIndex = 7;
             // 
             // FilterForm
             // 
@@ -149,5 +149,7 @@
         private Button CancelButton;
         private ImpedanceUserControl impedanceUserControl2;
         private ImpedanceUserControl impedanceUserControl1;
+        private ImpedanceUserControl impedanceUserControl4;
+        private ImpedanceUserControl impedanceUserControl3;
     }
 }
