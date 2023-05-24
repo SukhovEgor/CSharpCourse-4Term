@@ -64,7 +64,7 @@ namespace Model
                     }
 
                 default:
-                    throw new ArgumentException("enter the given passive elements");
+                    throw new ArgumentException("Enter the given passive elements");
             }
         }
     }

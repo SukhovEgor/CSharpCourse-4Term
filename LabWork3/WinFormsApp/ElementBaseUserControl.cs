@@ -15,9 +15,9 @@ namespace WinFormsApp
     {
         public abstract PassiveElementBase GetElement();
 
-        public void InputParameters(List<Action> actoins)
+        public void InputParameters(List<Action> actions)
         {
-            foreach(var action in actoins)
+            foreach(var action in actions)
             {
                 action.Invoke();
             }

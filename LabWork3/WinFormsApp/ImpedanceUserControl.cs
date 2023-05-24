@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Numerics;
+using Model;
 
 namespace WinFormsApp
 {
@@ -17,5 +19,14 @@ namespace WinFormsApp
             InitializeComponent();
         }
 
+        public Complex GetComplex()
+        {
+            double real = Convert.ToDouble(RealTextBox.Text);
+            double imaginary = Convert.ToDouble(ImaginaryTextBox.Text);
+            
+            var newComplex = new Complex(real, imaginary);
+            
+            return newComplex;
+        }
     }
 }

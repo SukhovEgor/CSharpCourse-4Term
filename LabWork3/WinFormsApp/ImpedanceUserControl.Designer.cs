@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.RealTextBox = new System.Windows.Forms.TextBox();
+            this.ImaginaryTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // RealTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 30);
-            this.textBox1.TabIndex = 0;
+            this.RealTextBox.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RealTextBox.Location = new System.Drawing.Point(3, 3);
+            this.RealTextBox.Name = "RealTextBox";
+            this.RealTextBox.Size = new System.Drawing.Size(57, 30);
+            this.RealTextBox.TabIndex = 0;
             // 
-            // textBox2
+            // ImaginaryTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(99, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(62, 30);
-            this.textBox2.TabIndex = 2;
+            this.ImaginaryTextBox.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ImaginaryTextBox.Location = new System.Drawing.Point(99, 3);
+            this.ImaginaryTextBox.Name = "ImaginaryTextBox";
+            this.ImaginaryTextBox.Size = new System.Drawing.Size(62, 30);
+            this.ImaginaryTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -63,8 +63,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ImaginaryTextBox);
+            this.Controls.Add(this.RealTextBox);
             this.Controls.Add(this.label1);
             this.Name = "ImpedanceUserControl";
             this.Size = new System.Drawing.Size(257, 34);
@@ -75,8 +75,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox RealTextBox;
+        private TextBox ImaginaryTextBox;
         private Label label1;
     }
 }

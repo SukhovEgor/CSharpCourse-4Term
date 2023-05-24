@@ -103,7 +103,24 @@ namespace WinFormsApp
 
         private void FilterButton_Click(object sender, EventArgs e)
         {
+            var newFilterForm = new FilterForm();
 
+            newFilterForm.ElementList = _elementList;
+
+            newFilterForm.Show();
+
+            newFilterForm.ElementListFiltered += (_, args) =>
+            {
+                ElementDataGridView.DataSource = args.ElementListFiltered;
+                _elementList = args.ElementListFiltered;
+            };
+
+            newFilterForm.Closed += (_, _) =>
+            {
+                FilterButton.Enabled = true;
+            };
+
+            FilterButton.Enabled = false;
         }
     }
 }

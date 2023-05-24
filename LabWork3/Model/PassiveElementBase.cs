@@ -43,6 +43,12 @@ namespace Model
         public abstract Complex GetImpedance { get; }
 
         /// <summary>
+        /// Gets impedance for DataGridView.
+        /// </summary>
+        [Browsable(false)]
+        public Complex FilterImpedance => FilteredImpedance(GetImpedance, 3);
+
+        /// <summary>
         /// Gets output of information about the element.
         /// </summary>
         [Browsable(false)]
@@ -84,6 +90,21 @@ namespace Model
 
             return ($"{realResistance}" +
                 $" + ({imaginaryResistance})j Ohm");
+        }
+
+        /// <summary>
+        /// Gets fdf.
+        /// </summary>
+        /// <param name="complex">dfsf.</param>
+        /// <returns>fsdfs.</returns>
+        public static Complex FilteredImpedance(Complex complex, int digits)
+        {
+            double realResistance = Math.Round
+                (complex.Real, digits);
+            double imaginaryResistance = Math.Round
+                (complex.Imaginary, digits);
+            var newComplex = new Complex(realResistance, imaginaryResistance);
+            return newComplex;
         }
 
     }
