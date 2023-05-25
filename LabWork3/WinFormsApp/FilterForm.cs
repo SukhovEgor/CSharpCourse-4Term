@@ -1,10 +1,16 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using Model;
 
 namespace WinFormsApp
 {
+    /// <summary>
+    /// Class FilterForm.
+    /// </summary>
     public partial class FilterForm : Form
     {
+        /// <summary>
+        /// Dictionary of elementTypes.
+        /// </summary>
         private readonly Dictionary<string, Type> _elementTypes = new()
         {
             {nameof(Resistor), typeof(Resistor)},
@@ -12,13 +18,25 @@ namespace WinFormsApp
             {nameof(InductorCoil), typeof(InductorCoil)}
         };
 
+        /// <summary>
+        /// Dictionary of ElementType names.
+        /// </summary>
         private readonly Dictionary<string, string> _listBoxToElementType;
 
-        public EventHandler<ElementEventArgsList> ElementListFiltered { get; set; }
+        /// <summary>
+        /// Gets or sets EventHandler _elementListFiltered field's property.
+        /// </summary>
+        public EventHandler<ElementEventArgsList> ElementListFiltered
+        { get; set; }
 
+        /// <summary>
+        /// Gets or sets BindingList for linh to MainForm _elementList.
+        /// </summary>
         public BindingList<PassiveElementBase> ElementList { get; set; }
 
-
+        /// <summary>
+        /// Filter form instance constructor.
+        /// </summary>
         public FilterForm()
         {
             InitializeComponent();
@@ -29,10 +47,16 @@ namespace WinFormsApp
                 {"Capacitor", nameof(Capacitor)},
                 {"InductorCoil", nameof(InductorCoil)}
             };
-            ElementCheckedListBox.Items.AddRange(_listBoxToElementType.Keys.ToArray());
+            ElementCheckedListBox.Items.AddRange
+                (_listBoxToElementType.Keys.ToArray());
             OKButton.Enabled = false;
         }
 
+        /// <summary>
+        /// Click event to filter information in DataGrid.
+        /// </summary>
+        /// <param name="sender">OKButton.</param>
+        /// <param name="e">Event argument.</param>
         private void OKButton_Click(object sender, EventArgs e)
         {
             try
@@ -52,7 +76,8 @@ namespace WinFormsApp
                                  ElementCheckedListBox.CheckedItems)
                         {
                             if (element.GetType() ==
-                                _elementTypes[_listBoxToElementType[checkedElement.ToString()]])
+                                _elementTypes[_listBoxToElementType
+                                [checkedElement.ToString()]])
                             {
 
                                 typeFilteredList.Add(element);
@@ -100,6 +125,11 @@ namespace WinFormsApp
 
         }
 
+        /// <summary>
+        /// Click event to cancel information in DataGrid to initial values.
+        /// </summary>
+        /// <param name="sender">CancelButton.</param>
+        /// <param name="e">Event argument.</param>
         private void CancelButton_Click(object sender, EventArgs e)
         {
             var eventArgs = new ElementEventArgsList(ElementList);
@@ -111,7 +141,8 @@ namespace WinFormsApp
             }
         }
 
-        private void ElementCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ElementCheckedListBox_SelectedIndexChanged
+            (object sender, EventArgs e)
         {
             OKButton.Enabled = true;
         }

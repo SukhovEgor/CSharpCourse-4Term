@@ -43,7 +43,7 @@ namespace Model
         public abstract Complex GetImpedance { get; }
 
         /// <summary>
-        /// Gets impedance for DataGridView.
+        /// Gets impedance for Filter.
         /// </summary>
         [Browsable(false)]
         public Complex FilterImpedance => FilteredImpedance(GetImpedance, 3);

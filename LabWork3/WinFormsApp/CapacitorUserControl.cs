@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Model;
 
 namespace WinFormsApp
 {
+    /// <summary>
+    /// UserControl for Capacitor.
+    /// </summary>
     public partial class CapacitorUserControl : ElementBaseUserControl
     {
+        /// <summary>
+        /// CapacitorUserControl instance constructor.
+        /// </summary>
         public CapacitorUserControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Get passive element object.
+        /// </summary>
+        /// <returns>Passive Element.</returns>
         public override PassiveElementBase GetElement()
         {
             var newCapacitor = new Capacitor();
@@ -26,17 +27,19 @@ namespace WinFormsApp
             {
                 () =>
                 {
-                    newCapacitor.Capacity = Convert.ToDouble(CapacityTextBox.Text.DotToComma());
+                    newCapacitor.Capacity = Convert.ToDouble
+                    (CapacityTextBox.Text.DotToComma());
                 },
                 () =>
                 {
-                    newCapacitor.Frequency = Convert.ToDouble(FrequencyTextBox.Text.DotToComma());
+                    newCapacitor.Frequency = Convert.ToDouble
+                    (FrequencyTextBox.Text.DotToComma());
                 }
             };
 
             InputParameters(actions);
 
             return newCapacitor;
-        } 
+        }
     }
 }

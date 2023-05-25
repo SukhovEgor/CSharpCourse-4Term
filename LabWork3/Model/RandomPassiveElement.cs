@@ -1,20 +1,21 @@
 namespace Model
 {
     /// <summary>
-    /// g.
+    /// Class RandomPassiveElement.
     /// </summary>
     public class RandomPassiveElement
     {
         /// <summary>
-        /// fddf.
+        /// Get Random Number.
         /// </summary>
         /// <param name="minimum">minimum.</param>
         /// <param name="maximum">maximum.</param>
-        /// <returns>dfd.</returns>
+        /// <returns>rounded value.</returns>
         public static double GetRandomNumber(double minimum, double maximum)
         {
             Random random = new Random();
-            double roundedValue = Math.Round(random.NextDouble() * (maximum - minimum) + minimum, 3);
+            double roundedValue = Math.Round
+                (random.NextDouble() * (maximum - minimum) + minimum, 3);
             return roundedValue;
         }
 
@@ -23,7 +24,8 @@ namespace Model
         /// </summary>
         /// <param name="passiveElementType">fdfdf.</param>
         /// <returns>fdfdf.</returns>
-        public PassiveElementBase GetRandomParameters(PassiveElementType passiveElementType)
+        public PassiveElementBase GetRandomParameters
+            (PassiveElementType passiveElementType)
         {
             const double minResistance = 0.1;
 
@@ -45,26 +47,32 @@ namespace Model
             {
                 case PassiveElementType.Resistor:
                     {
-                        double resistance = GetRandomNumber(minResistance, maxResistance);
+                        double resistance = GetRandomNumber
+                            (minResistance, maxResistance);
                         return new Resistor(resistance);
                     }
 
                 case PassiveElementType.Capacitor:
                     {
-                        double capacity = GetRandomNumber(minCapacity, maxCapacity);
-                        double frequency = GetRandomNumber(minFrequency, maxFrequency);
+                        double capacity = GetRandomNumber
+                            (minCapacity, maxCapacity);
+                        double frequency = GetRandomNumber
+                            (minFrequency, maxFrequency);
                         return new Capacitor(capacity, frequency);
                     }
 
                 case PassiveElementType.InductorCoil:
                     {
-                        double capacity = GetRandomNumber(minCapacity, maxCapacity);
-                        double inductance = GetRandomNumber(minInductance, maxInductance);
+                        double capacity = GetRandomNumber
+                            (minCapacity, maxCapacity);
+                        double inductance = GetRandomNumber
+                            (minInductance, maxInductance);
                         return new InductorCoil(capacity, inductance);
                     }
 
                 default:
-                    throw new ArgumentException("Enter the given passive elements");
+                    throw new ArgumentException
+                        ("Enter the given passive elements");
             }
         }
     }

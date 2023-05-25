@@ -1,23 +1,24 @@
-﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Model;
 
 namespace WinFormsApp
 {
+    /// <summary>
+    /// Class InductorCoilUserControl.
+    /// </summary>
     public partial class InductorCoilUserControl : ElementBaseUserControl
     {
+        /// <summary>
+        /// InductorCoilUserControl instance constructor.
+        /// </summary>
         public InductorCoilUserControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Get passive element object.
+        /// </summary>
+        /// <returns>Passive Element.</returns>
         public override PassiveElementBase GetElement()
         {
             var newInductorCoil = new InductorCoil();
@@ -26,11 +27,13 @@ namespace WinFormsApp
             {
                 () =>
                 {
-                    newInductorCoil.Inductance = Convert.ToDouble(InductanceTextBox.Text.DotToComma());
+                    newInductorCoil.Inductance =
+                    Convert.ToDouble(InductanceTextBox.Text.DotToComma());
                 },
                 () =>
                 {
-                    newInductorCoil.Frequency = Convert.ToDouble(FrequencyTextBox.Text.DotToComma());
+                    newInductorCoil.Frequency =
+                    Convert.ToDouble(FrequencyTextBox.Text.DotToComma());
                 }
             };
 
