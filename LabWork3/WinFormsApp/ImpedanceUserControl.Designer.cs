@@ -75,8 +75,8 @@
 
         #endregion
 
-        private TextBox RealTextBox;
-        private TextBox ImaginaryTextBox;
+        public TextBox RealTextBox;
+        public TextBox ImaginaryTextBox;
         private Label label1;
     }
 }

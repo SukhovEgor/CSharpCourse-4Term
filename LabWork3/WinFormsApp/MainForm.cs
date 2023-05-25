@@ -23,7 +23,7 @@ namespace WinFormsApp
         {
             var fileBrowser = new SaveFileDialog
             {
-                Filter = "PassiveElement (*.pelmt)|*.pelmt"
+                Filter = "PassiveElement (*.elmt)|*.elmt"
             };
 
             fileBrowser.ShowDialog();

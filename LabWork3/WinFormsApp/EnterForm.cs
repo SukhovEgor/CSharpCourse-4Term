@@ -38,11 +38,15 @@ namespace WinFormsApp
 
             ElementTypesComboBox.SelectedIndexChanged +=
                 ElementTypesComboBox_SelectedIndexChanged;
+
+            OKButton.Enabled = false;
         }
 
         private void ElementTypesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedElement = ElementTypesComboBox.SelectedItem.ToString();
+            
+            OKButton.Enabled = true;
 
             foreach (var (key, value) in _comboBoxToUserControl)
             {
@@ -75,7 +79,9 @@ namespace WinFormsApp
                     if (exception.GetType() == typeof
                         (ArgumentOutOfRangeException) ||
                         exception.GetType() == typeof
-                        (FormatException))
+                        (FormatException) ||
+                        exception.GetType() == typeof
+                        (ArgumentException))
                     {
                         _ = MessageBox.Show
                             ($"Incorrect input parameters.\n" +

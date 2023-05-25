@@ -19,7 +19,7 @@ namespace Model
         /// <summary>
         /// Minimum value.
         /// </summary>
-        private const int _minValue = 0;
+        private const double _minValue = 0.0001;
 
         /// <summary>
         /// Gets type of passive element for DataGridView.
@@ -62,10 +62,14 @@ namespace Model
         /// <exception cref="ArgumentException">Incorrect value.</exception>
         protected static double CheckValue(double value)
         {
-            if (value <= _minValue)
+            if (double.IsNaN(value))
             {
-                throw new ArgumentException
-                    ("The value should not be negative");
+                throw new ArgumentException("NaN value!");
+            }
+            else if (value < _minValue)
+            {
+                throw new ArgumentOutOfRangeException
+                    ($"{value} must be greater than {_minValue}");
             }
             else
             {

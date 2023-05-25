@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilterForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ImpedanceUserControl = new WinFormsApp.ImpedanceUserControl();
             this.OKButton = new System.Windows.Forms.Button();
@@ -95,6 +96,7 @@
             this.ElementCheckedListBox.Name = "ElementCheckedListBox";
             this.ElementCheckedListBox.Size = new System.Drawing.Size(227, 70);
             this.ElementCheckedListBox.TabIndex = 0;
+            this.ElementCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.ElementCheckedListBox_SelectedIndexChanged);
             // 
             // FilterForm
             // 
@@ -102,8 +104,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(256, 239);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FilterForm";
-            this.Text = "FilterForm";
+            this.Text = "Filter";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

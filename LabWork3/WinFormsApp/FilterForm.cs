@@ -30,16 +30,19 @@ namespace WinFormsApp
                 {"InductorCoil", nameof(InductorCoil)}
             };
             ElementCheckedListBox.Items.AddRange(_listBoxToElementType.Keys.ToArray());
+            OKButton.Enabled = false;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            var valueFilteredList = new BindingList<PassiveElementBase>();
-            var typeFilteredList = new BindingList<PassiveElementBase>();
+            try
+            {
+                var valueFilteredList = new BindingList<PassiveElementBase>();
+                var typeFilteredList = new BindingList<PassiveElementBase>();
 
-            var searchValue = ImpedanceUserControl.GetComplex();
-            
-            var action = new List<Action<BindingList<PassiveElementBase>>>
+                var searchValue = ImpedanceUserControl.GetComplex();
+
+                var action = new List<Action<BindingList<PassiveElementBase>>>
             {
                 typeFilteredList =>
                 {
@@ -51,6 +54,7 @@ namespace WinFormsApp
                             if (element.GetType() ==
                                 _elementTypes[_listBoxToElementType[checkedElement.ToString()]])
                             {
+
                                 typeFilteredList.Add(element);
                             }
                         }
@@ -68,17 +72,48 @@ namespace WinFormsApp
                     }
                 }
             };
-            action[0].Invoke(typeFilteredList);
-            action[1].Invoke(typeFilteredList);
-            var eventArgs = new ElementEventArgsList
-                (valueFilteredList);
-            ElementListFiltered?.Invoke(this, eventArgs);
+                action[0].Invoke(typeFilteredList);
+                action[1].Invoke(typeFilteredList);
+
+                var eventArgs = new ElementEventArgsList
+                    (valueFilteredList);
+                ElementListFiltered?.Invoke(this, eventArgs);
+            }
+            catch (Exception exception)
+            {
+                if (exception.GetType() == typeof
+                    (ArgumentOutOfRangeException) ||
+                    exception.GetType() == typeof
+                    (FormatException) ||
+                    exception.GetType() == typeof
+                    (ArgumentException))
+                {
+                    _ = MessageBox.Show
+                        ($"Incorrect input parameters.\n" +
+                        $"Error: {exception.Message}");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             var eventArgs = new ElementEventArgsList(ElementList);
             ElementListFiltered?.Invoke(this, eventArgs);
+            if (!string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text))
+            {
+                ImpedanceUserControl.RealTextBox.Clear();
+                ImpedanceUserControl.ImaginaryTextBox.Clear();
+            }
+        }
+
+        private void ElementCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OKButton.Enabled = true;
         }
     }
 }
