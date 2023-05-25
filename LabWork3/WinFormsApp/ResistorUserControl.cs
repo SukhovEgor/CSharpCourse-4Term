@@ -16,7 +16,7 @@ namespace WinFormsApp
             {
                 () =>
                 {
-                    newResistor.Resistance = Convert.ToDouble(ResistanceTextBox.Text);
+                    newResistor.Resistance = Convert.ToDouble(ResistanceTextBox.Text.DotToComma());
                 }
             };
 

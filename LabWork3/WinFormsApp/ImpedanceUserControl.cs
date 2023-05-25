@@ -21,8 +21,8 @@ namespace WinFormsApp
 
         public Complex GetComplex()
         {
-            double real = Convert.ToDouble(RealTextBox.Text);
-            double imaginary = Convert.ToDouble(ImaginaryTextBox.Text);
+            double real = Convert.ToDouble(RealTextBox.Text.DotToComma());
+            double imaginary = Convert.ToDouble(ImaginaryTextBox.Text.DotToComma());
             
             var newComplex = new Complex(real, imaginary);
             

@@ -26,11 +26,11 @@ namespace WinFormsApp
             {
                 () =>
                 {
-                    newCapacitor.Capacity = Convert.ToDouble(CapacityTextBox.Text);
+                    newCapacitor.Capacity = Convert.ToDouble(CapacityTextBox.Text.DotToComma());
                 },
                 () =>
                 {
-                    newCapacitor.Frequency = Convert.ToDouble(FrequencyTextBox.Text);
+                    newCapacitor.Frequency = Convert.ToDouble(FrequencyTextBox.Text.DotToComma());
                 }
             };
 

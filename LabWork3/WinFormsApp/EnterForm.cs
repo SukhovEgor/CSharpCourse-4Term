@@ -62,11 +62,30 @@ namespace WinFormsApp
             }
             else
             {
-                var selectedElement = ElementTypesComboBox.SelectedItem.ToString();
-                var selectedElementControl = _comboBoxToUserControl[selectedElement];
-                var eventArgs = new ElementEventArgs
-                    (((ElementBaseUserControl)selectedElementControl).GetElement());
-                ElementEventHandler?.Invoke(this, eventArgs);
+                try
+                {
+                    var selectedElement = ElementTypesComboBox.SelectedItem.ToString();
+                    var selectedElementControl = _comboBoxToUserControl[selectedElement];
+                    var eventArgs = new ElementEventArgs
+                        (((ElementBaseUserControl)selectedElementControl).GetElement());
+                    ElementEventHandler?.Invoke(this, eventArgs);
+                }
+                catch (Exception exception)
+                {
+                    if (exception.GetType() == typeof
+                        (ArgumentOutOfRangeException) ||
+                        exception.GetType() == typeof
+                        (FormatException))
+                    {
+                        _ = MessageBox.Show
+                            ($"Incorrect input parameters.\n" +
+                            $"Error: {exception.Message}");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
 
         }
@@ -79,16 +98,6 @@ namespace WinFormsApp
         private void AddRandomElementButton_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            /*
-            ElementTypesComboBox.SelectedIndex = random.Next(0, 3);
-
-            foreach (TextBox textbox in Controls.OfType<TextBox>())
-            {
-                if (textbox.Visible && String.IsNullOrEmpty(textbox.Text))
-                {
-                    textbox.Text = random.Next(1, 100).ToString();
-                }
-            }*/
 
             var elementTypes = new Dictionary<int, PassiveElementType>
             {

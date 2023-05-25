@@ -96,6 +96,7 @@ namespace Model
         /// Gets fdf.
         /// </summary>
         /// <param name="complex">dfsf.</param>
+        /// /// <param name="digits">Digits.</param>
         /// <returns>fsdfs.</returns>
         public static Complex FilteredImpedance(Complex complex, int digits)
         {
@@ -106,6 +107,5 @@ namespace Model
             var newComplex = new Complex(realResistance, imaginaryResistance);
             return newComplex;
         }
-
     }
 }

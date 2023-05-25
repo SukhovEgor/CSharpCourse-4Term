@@ -1,13 +1,16 @@
 using Model;
 using System.ComponentModel;
-using System.IO;
 using System.Xml.Serialization;
+
 
 namespace WinFormsApp
 {
     public partial class MainForm : Form
     {
-        public static BindingList<PassiveElementBase> _elementList = new();
+        private BindingList<PassiveElementBase> _elementList = new();
+        
+        private BindingList<PassiveElementBase> _filteredList = new();
+
         public MainForm()
         {
             InitializeComponent();
@@ -43,26 +46,32 @@ namespace WinFormsApp
         {
             var fileBrowser = new OpenFileDialog
             {
-                Filter = "PassiveElement (*.pelmt)|*.pelmt"
+                Filter = "PassiveElement (*.elmt)|*.elmt"
             };
 
             fileBrowser.ShowDialog();
             var path = fileBrowser.FileName;
 
-            
             if (string.IsNullOrEmpty(path))
             {
                 return;
             }
 
             var xmlSerializer = new XmlSerializer(typeof(BindingList<PassiveElementBase>));
-
-            using (var file = new StreamReader(path))
+            try
             {
-                _elementList = (BindingList<PassiveElementBase>)xmlSerializer.Deserialize(file);
+                using (var file = new StreamReader(path))
+                {
+                    _elementList = (BindingList<PassiveElementBase>)xmlSerializer.Deserialize(file);
+                }
+                ElementDataGridView.DataSource = _elementList;
             }
-
-            ElementDataGridView.DataSource = _elementList;
+            catch (Exception exception)
+            {
+                MessageBox.Show("The file could not be uploaded.\n",
+                    "The file is corrupted or does not match the format.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -92,6 +101,7 @@ namespace WinFormsApp
                 foreach (DataGridViewRow row in ElementDataGridView.SelectedRows)
                 {
                     _elementList.Remove(row.DataBoundItem as PassiveElementBase);
+                    _filteredList.Remove(row.DataBoundItem as PassiveElementBase);
                 }
             }
         }
@@ -99,6 +109,7 @@ namespace WinFormsApp
         private void ClearButton_Click(object sender, EventArgs e)
         {
             _elementList.Clear();
+            _filteredList.Clear();
         }
 
         private void FilterButton_Click(object sender, EventArgs e)

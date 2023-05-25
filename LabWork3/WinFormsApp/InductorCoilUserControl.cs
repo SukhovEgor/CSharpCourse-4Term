@@ -26,11 +26,11 @@ namespace WinFormsApp
             {
                 () =>
                 {
-                    newInductorCoil.Inductance = Convert.ToDouble(InductanceTextBox.Text);
+                    newInductorCoil.Inductance = Convert.ToDouble(InductanceTextBox.Text.DotToComma());
                 },
                 () =>
                 {
-                    newInductorCoil.Frequency = Convert.ToDouble(FrequencyTextBox.Text);
+                    newInductorCoil.Frequency = Convert.ToDouble(FrequencyTextBox.Text.DotToComma());
                 }
             };
 
