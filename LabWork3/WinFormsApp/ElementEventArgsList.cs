@@ -12,7 +12,7 @@ namespace WinFormsApp
         /// Gets filtered element list.
         /// </summary>
         public BindingList<PassiveElementBase> ElementListFiltered
-        { get; private set; }
+            { get; private set; }
 
         /// <summary>
         /// Constructor of event.

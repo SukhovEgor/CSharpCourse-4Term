@@ -59,6 +59,7 @@ namespace WinFormsApp
         /// <param name="e">Event argument.</param>
         private void OKButton_Click(object sender, EventArgs e)
         {
+            //TODO: refactor
             try
             {
                 var valueFilteredList = new BindingList<PassiveElementBase>();
@@ -67,36 +68,36 @@ namespace WinFormsApp
                 var searchValue = ImpedanceUserControl.GetComplex();
 
                 var action = new List<Action<BindingList<PassiveElementBase>>>
-            {
-                typeFilteredList =>
                 {
-                    foreach (var element in ElementList)
+                    typeFilteredList =>
                     {
-                        foreach (var checkedElement in
-                                 ElementCheckedListBox.CheckedItems)
+                        foreach (var element in ElementList)
                         {
-                            if (element.GetType() ==
-                                _elementTypes[_listBoxToElementType
-                                [checkedElement.ToString()]])
+                            foreach (var checkedElement in
+                                     ElementCheckedListBox.CheckedItems)
                             {
+                                if (element.GetType() ==
+                                    _elementTypes[_listBoxToElementType
+                                    [checkedElement.ToString()]])
+                                {
 
-                                typeFilteredList.Add(element);
+                                    typeFilteredList.Add(element);
+                                }
+                            }
+                        }
+                    },
+
+                    typeFilteredList =>
+                    {
+                        foreach (var element in typeFilteredList)
+                        {
+                            if (element.FilterImpedance == searchValue)
+                            {
+                                valueFilteredList.Add(element);
                             }
                         }
                     }
-                },
-
-                typeFilteredList =>
-                {
-                    foreach (var element in typeFilteredList)
-                    {
-                        if (element.FilterImpedance == searchValue)
-                        {
-                            valueFilteredList.Add(element);
-                        }
-                    }
-                }
-            };
+                };
 
                 if (string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text) &&
                     string.IsNullOrEmpty(ImpedanceUserControl.ImaginaryTextBox.Text))
@@ -130,12 +131,9 @@ namespace WinFormsApp
             }
             catch (Exception exception)
             {
-                if (exception.GetType() == typeof
-                    (ArgumentOutOfRangeException) ||
-                    exception.GetType() == typeof
-                    (FormatException) ||
-                    exception.GetType() == typeof
-                    (ArgumentException))
+                if (exception.GetType() == typeof(ArgumentOutOfRangeException)
+                    || exception.GetType() == typeof(FormatException)
+                    || exception.GetType() == typeof(ArgumentException))
                 {
                     _ = MessageBox.Show
                         ($"Incorrect input parameters.\n" +
@@ -165,7 +163,7 @@ namespace WinFormsApp
                 ImpedanceUserControl.ImaginaryTextBox.Clear();
             }
         }
-
+        //TODO: XML
         private void ElementCheckedListBox_SelectedIndexChanged
             (object sender, EventArgs e)
         {
