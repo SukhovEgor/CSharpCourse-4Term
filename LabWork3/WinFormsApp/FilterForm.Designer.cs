@@ -108,7 +108,8 @@ namespace WinFormsApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FilterForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Location = new System.Drawing.Point(1200, 430);
             this.Text = "Filter";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
