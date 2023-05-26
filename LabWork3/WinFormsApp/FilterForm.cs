@@ -97,12 +97,35 @@ namespace WinFormsApp
                     }
                 }
             };
-                action[0].Invoke(typeFilteredList);
-                action[1].Invoke(typeFilteredList);
 
-                var eventArgs = new ElementEventArgsList
-                    (valueFilteredList);
-                ElementListFiltered?.Invoke(this, eventArgs);
+                if (string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text) &&
+                    string.IsNullOrEmpty(ImpedanceUserControl.ImaginaryTextBox.Text))
+                {
+                    action[0].Invoke(typeFilteredList);
+
+                    var eventArgs = new ElementEventArgsList(typeFilteredList);
+                    ElementListFiltered?.Invoke(this, eventArgs);
+
+                }
+
+                else
+                {
+                    if (ElementCheckedListBox.SelectedItems.Count == 0)
+                    {
+                        typeFilteredList = ElementList;
+                        action[1].Invoke(typeFilteredList);
+                    }
+                    else
+                    {
+                        action[0].Invoke(typeFilteredList);
+                        action[1].Invoke(typeFilteredList);
+                    }
+
+                    var eventArgs = new ElementEventArgsList
+                        (valueFilteredList);
+                    ElementListFiltered?.Invoke(this, eventArgs);
+                }
+
             }
             catch (Exception exception)
             {
@@ -134,7 +157,8 @@ namespace WinFormsApp
         {
             var eventArgs = new ElementEventArgsList(ElementList);
             ElementListFiltered?.Invoke(this, eventArgs);
-            if (!string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text))
+            if (!string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text) ||
+                !string.IsNullOrEmpty(ImpedanceUserControl.ImaginaryTextBox.Text))
             {
                 ImpedanceUserControl.RealTextBox.Clear();
                 ImpedanceUserControl.ImaginaryTextBox.Clear();

@@ -23,7 +23,15 @@ namespace WinFormsApp
         /// Input string is empty.</exception>
         public Complex GetComplex()
         {
-            if (string.IsNullOrEmpty(RealTextBox.Text) ||
+            double real = Convert.ToDouble
+                (RealTextBox.Text.DotToComma());
+
+            double imaginary = Convert.ToDouble
+                (ImaginaryTextBox.Text.DotToComma());
+
+            var newComplex = new Complex(real, imaginary);
+            return newComplex;
+            /*if (string.IsNullOrEmpty(RealTextBox.Text) ||
                 string.IsNullOrEmpty(ImaginaryTextBox.Text))
             {
                 throw new ArgumentException("Input string is empty.");
@@ -31,15 +39,8 @@ namespace WinFormsApp
             }
             else
             {
-                double real = Convert.ToDouble
-                    (RealTextBox.Text.DotToComma());
 
-                double imaginary = Convert.ToDouble
-                    (ImaginaryTextBox.Text.DotToComma());
-
-                var newComplex = new Complex(real, imaginary);
-                return newComplex;
-            }
+            }*/
         }
     }
 }

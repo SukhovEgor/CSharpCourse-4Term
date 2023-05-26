@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp
+namespace WinFormsApp
 {
     partial class EnterForm
     {
@@ -139,10 +139,12 @@
             this.Name = "EnterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enter";
+            this.MaximizeBox = false;
             this.Load += new System.EventHandler(this.EnterForm_Load);
             this.SelectElementGroupBox.ResumeLayout(false);
             this.ParametersGgroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
