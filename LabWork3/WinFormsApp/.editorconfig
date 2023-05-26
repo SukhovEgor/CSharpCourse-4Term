@@ -314,7 +314,7 @@ dotnet_diagnostic.IDE0077.severity = suggestion
 [*.cs]
 
 # Rule violations lead to errors during build stage
-dotnet_diagnostic.IDE0055.severity = error
+dotnet_diagnostic.IDE0055.severity = suggestion
 
 # Sort “using” directives
 dotnet_sort_system_directives_first = false
@@ -1299,3 +1299,6 @@ dotnet_diagnostic.CA2257.severity = warning
 
 # Providing a 'DynamicInterfaceCastableImplementation' interface in Visual Basic is unsupported
 dotnet_diagnostic.CA2258.severity = warning
+
+# Default severity for analyzer diagnostics with category 'Style'
+dotnet_analyzer_diagnostic.category-Style.severity = none

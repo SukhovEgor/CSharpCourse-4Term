@@ -59,15 +59,22 @@ namespace WinFormsApp
         /// <param name="e">Event argument.</param>
         private void OKButton_Click(object sender, EventArgs e)
         {
-            //TODO: refactor
-            try
+
+            // TODO: refactor (+)
+            var valueFilteredList = new BindingList<PassiveElementBase>();
+            var typeFilteredList = new BindingList<PassiveElementBase>();
+
+            var searchValueFilled = double.TryParse
+                (SearchTextBox.Text.DotToComma(), out double searchValue);
+
+            if (!string.IsNullOrEmpty(SearchTextBox.Text.DotToComma()) &&
+                !searchValueFilled)
             {
-                var valueFilteredList = new BindingList<PassiveElementBase>();
-                var typeFilteredList = new BindingList<PassiveElementBase>();
+                _ = MessageBox.Show("Input string was not in correct format!");
+                SearchTextBox.Clear();
+            }
 
-                var searchValue = ImpedanceUserControl.GetComplex();
-
-                var action = new List<Action<BindingList<PassiveElementBase>>>
+            var action = new List<Action<BindingList<PassiveElementBase>>>
                 {
                     typeFilteredList =>
                     {
@@ -91,7 +98,7 @@ namespace WinFormsApp
                     {
                         foreach (var element in typeFilteredList)
                         {
-                            if (element.FilterImpedance == searchValue)
+                            if (element.Impedance.Contains(searchValue.ToString()))
                             {
                                 valueFilteredList.Add(element);
                             }
@@ -99,52 +106,30 @@ namespace WinFormsApp
                     }
                 };
 
-                if (string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text) &&
-                    string.IsNullOrEmpty(ImpedanceUserControl.ImaginaryTextBox.Text))
-                {
-                    if ()
-                    action[0].Invoke(typeFilteredList);
-
-                    var eventArgs = new ElementEventArgsList(typeFilteredList);
-                    ElementListFiltered?.Invoke(this, eventArgs);
-
-                }
-
-                else
-                {
-                    if (ElementCheckedListBox.SelectedItems.Count == 0)
-                    {
-                        typeFilteredList = ElementList;
-                        action[1].Invoke(typeFilteredList);
-                    }
-                    else
-                    {
-                        action[0].Invoke(typeFilteredList);
-                        action[1].Invoke(typeFilteredList);
-                    }
-
-                    var eventArgs = new ElementEventArgsList
-                        (valueFilteredList);
-                    ElementListFiltered?.Invoke(this, eventArgs);
-                }
-
-            }
-            catch (Exception exception)
+            if (string.IsNullOrEmpty(searchValue.ToString()))
             {
-                if (exception.GetType() == typeof(ArgumentOutOfRangeException)
-                    || exception.GetType() == typeof(FormatException)
-                    || exception.GetType() == typeof(ArgumentException))
+                action[0].Invoke(typeFilteredList);
+
+                var eventArgs = new ElementEventArgsList(typeFilteredList);
+                ElementListFiltered?.Invoke(this, eventArgs);
+            }
+            else
+            {
+                if (ElementCheckedListBox.SelectedItems.Count == 0)
                 {
-                    _ = MessageBox.Show
-                        ($"Incorrect input parameters.\n" +
-                        $"Error: {exception.Message}");
+                    typeFilteredList = ElementList;
+                    action[1].Invoke(typeFilteredList);
                 }
                 else
                 {
-                    throw;
+                    action[0].Invoke(typeFilteredList);
+                    action[1].Invoke(typeFilteredList);
                 }
-            }
 
+                var eventArgs = new ElementEventArgsList
+                    (valueFilteredList);
+                ElementListFiltered?.Invoke(this, eventArgs);
+            }
         }
 
         /// <summary>
@@ -156,14 +141,20 @@ namespace WinFormsApp
         {
             var eventArgs = new ElementEventArgsList(ElementList);
             ElementListFiltered?.Invoke(this, eventArgs);
-            if (!string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text) ||
-                !string.IsNullOrEmpty(ImpedanceUserControl.ImaginaryTextBox.Text))
+
+            if (!string.IsNullOrEmpty(SearchTextBox.Text.DotToComma()))
             {
-                ImpedanceUserControl.RealTextBox.Clear();
-                ImpedanceUserControl.ImaginaryTextBox.Clear();
+                SearchTextBox.Clear();
             }
         }
-        //TODO: XML
+
+        // TODO: XML(+)
+
+        /// <summary>
+        /// Click event to check changes in CheckedListBox.
+        /// </summary>
+        /// <param name="sender"> ElementCheckedListBox.</param>
+        /// <param name="e">EventArgs.</param>
         private void ElementCheckedListBox_SelectedIndexChanged
             (object sender, EventArgs e)
         {

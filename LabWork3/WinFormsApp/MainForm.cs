@@ -95,7 +95,7 @@ namespace WinFormsApp
             }
             catch (Exception)
             {
-                _ = MessageBox.Show("The file could not be uploaded.\n",
+                _ = MessageBox.Show("The file could not be open.\n",
                     "The file is corrupted or does not match the format.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

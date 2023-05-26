@@ -1,10 +1,11 @@
 namespace WinFormsApp
 {
-    //TODO: rename
+    // TODO: rename(+)
+
     /// <summary>
     /// Class ChangeDot.
     /// </summary>
-    internal static class ChangeDot
+    internal static class Tools
     {
         /// <summary>
         /// Dot are chanded to comma.
