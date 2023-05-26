@@ -101,6 +101,7 @@ namespace WinFormsApp
                 if (string.IsNullOrEmpty(ImpedanceUserControl.RealTextBox.Text) &&
                     string.IsNullOrEmpty(ImpedanceUserControl.ImaginaryTextBox.Text))
                 {
+                    if ()
                     action[0].Invoke(typeFilteredList);
 
                     var eventArgs = new ElementEventArgsList(typeFilteredList);
