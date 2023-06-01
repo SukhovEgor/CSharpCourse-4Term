@@ -31,16 +31,6 @@ namespace WinFormsApp
 
             var newComplex = new Complex(real, imaginary);
             return newComplex;
-            /*if (string.IsNullOrEmpty(RealTextBox.Text) ||
-                string.IsNullOrEmpty(ImaginaryTextBox.Text))
-            {
-                throw new ArgumentException("Input string is empty.");
-
-            }
-            else
-            {
-
-            }*/
         }
     }
 }
