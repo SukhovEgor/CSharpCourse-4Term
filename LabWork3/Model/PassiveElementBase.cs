@@ -97,9 +97,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Gets fdf.
+        /// Gets Filtered Impedance.
         /// </summary>
-        /// <param name="complex">dfsf.</param>
+        /// <param name="complex">Complex..</param>
         /// /// <param name="digits">Digits.</param>
         /// <returns>fsdfs.</returns>
         public static Complex FilteredImpedance(Complex complex, int digits)
