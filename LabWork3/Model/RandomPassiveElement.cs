@@ -15,15 +15,15 @@ namespace Model
         {
             Random random = new Random();
             double roundedValue = Math.Round
-                (random.NextDouble() * (maximum - minimum) + minimum, 3);
+                (random.NextDouble() * (maximum - minimum) + minimum, random.Next(0, 10));
             return roundedValue;
         }
 
         /// <summary>
-        /// dfdf.
+        /// GetRandomParameters.
         /// </summary>
-        /// <param name="passiveElementType">fdfdf.</param>
-        /// <returns>fdfdf.</returns>
+        /// <param name="passiveElementType">passiveElementType.</param>
+        /// <returns>PassiveElementBase.</returns>
         public PassiveElementBase GetRandomParameters
             (PassiveElementType passiveElementType)
         {
