@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{720D87F3-C438-4AF8-9861-CFD9A002A6AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp", "WinFormsApp\WinFormsApp.csproj", "{6F8A9659-F12D-42FD-AAB2-B8279D28F8AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6C26B6E1-4962-4749-B70F-2100EB9599EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{720D87F3-C438-4AF8-9861-CFD9A002A6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{720D87F3-C438-4AF8-9861-CFD9A002A6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{720D87F3-C438-4AF8-9861-CFD9A002A6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{720D87F3-C438-4AF8-9861-CFD9A002A6AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F8A9659-F12D-42FD-AAB2-B8279D28F8AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F8A9659-F12D-42FD-AAB2-B8279D28F8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F8A9659-F12D-42FD-AAB2-B8279D28F8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F8A9659-F12D-42FD-AAB2-B8279D28F8AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C26B6E1-4962-4749-B70F-2100EB9599EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C26B6E1-4962-4749-B70F-2100EB9599EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C26B6E1-4962-4749-B70F-2100EB9599EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C26B6E1-4962-4749-B70F-2100EB9599EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
