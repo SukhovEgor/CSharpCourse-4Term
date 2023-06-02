@@ -15,7 +15,7 @@ namespace Model
         {
             Random random = new Random();
             double roundedValue = Math.Round
-                (random.NextDouble() * (maximum - minimum) + minimum, random.Next(0, 10));
+                (random.NextDouble() * (maximum - minimum) + minimum, random.Next(2, 10));
             return roundedValue;
         }
 
