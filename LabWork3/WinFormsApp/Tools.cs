@@ -1,7 +1,5 @@
 namespace WinFormsApp
 {
-    // TODO: rename(+)
-
     /// <summary>
     /// Class ChangeDot.
     /// </summary>

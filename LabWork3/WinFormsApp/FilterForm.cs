@@ -60,7 +60,6 @@ namespace WinFormsApp
         private void OKButton_Click(object sender, EventArgs e)
         {
 
-            // TODO: refactor (+)
             var valueFilteredList = new BindingList<PassiveElementBase>();
             var typeFilteredList = new BindingList<PassiveElementBase>();
 
@@ -147,8 +146,6 @@ namespace WinFormsApp
                 SearchTextBox.Clear();
             }
         }
-
-        // TODO: XML(+)
 
         /// <summary>
         /// Click event to check changes in CheckedListBox.
